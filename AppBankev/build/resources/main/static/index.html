@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Estacionamento</title>
+	<script src="js/jquery.js"></script>
+	<link href="css/bootstrap.min.css" rel=stylesheet>
+	<script>
+
+
+
+		$(document).ready(function(){
+			$("#busca").click(function() {
+				var modelo = $( "'#modelo' option:selected" ).text();
+				var marca = $( "#marca option:selected" ).text();
+				var cor = $( "#cor option:selected" ).text();
+				$("#dadosCarro").empty();
+				var url = "/carro/"+modelo+"/"+marca+"/"+cor+"";
+				$.getJSON(url, function(data) {
+						var itens = [];
+
+						$.each(data, function(i){
+							itens.push("<tr> <td>"+ this.placa +"</td><td>"+ this.espc.modelo + "</td><td>"+ this.espc.marca + "</td><td>"+ this.espc.cor + "</td></tr>");
+						});
+						$("#dadosCarro").append(itens);
+				});
+			});
+
+
+/*Mas nao ta fazendo sentido algum dele estar duplicando... Vamos ver... Na verdade o dadosCarro é um array do HTML*/
+/*Faz o seguinte, peg ao seu e cola aqui em baixo pra ver se eu posso ter alterado algo no meio do JS que eu fiz*/
+/*teste*/
+/*alert (document.getElementById("basic-url").value);*/
+      $("#buscaPlaca").click(function() {
+				var placa = document.getElementById("basic-url").value;
+				$("#dadosCarro").empty();
+				var url = "/carro/"+placa+"";
+				$.getJSON(url, function(data) {
+						var itens = [];
+							itens.push("<tr> <td>"+ data.placa +"</td><td>"+ data.espc.modelo + "</td><td>"+ data.espc.marca + "</td><td>"+ data.espc.cor + "</td></tr>");
+            if($("#dadosCarro").empty()){
+                $("#dadosCarro").append(itens);
+            }
+            				});
+			});
+
+            /*a vei, tá igualzinho. aff. oloko, mas..... oxe... perai*/
+            /*pIOR QUE EUSTOU MEU CONSAGRADO, ainda usando em modo anonimo pq o Ionic me deu trauma por Cache*/
+            /*MEU    DEUS    DO     SÉU     ME     AJUDA     POR     FAVOR     NUNCA     PEDI    NADA */
+            /*Mano, ta exatamente a mesma coisa*/
+            /*Sabe porque que eu acho que era o COntroller? pois ele pode estar retornando DOIS carros em vez de UM*/
+
+            /*
+              autor: Gusv
+*/
+             /* $("#busca2").click(function () {
+                var placa = document.getElementById("placa").value;
+                $("#dadosCarro").empty();
+                var url = "/carro/"+placa+"";
+                $.getJSON(url, function(data) {
+                var itens = [];
+                itens.push("<tr> <td>"+ data.placa +"</td><td>"+ data.espc.modelo + "</td><td>"+ data.espc.marca + "</td><td>"+ data.espc.cor + "</td></tr>");
+				         $("#dadosCarro").append(itens);
+				});
+
+
+
+            });*/
+
+
+
+
+
+
+
+
+
+
+
+
+		});
+	</script>
+
+
+
+
+  </head>
+  <body>
+  	<br>
+  	<br>
+  		<div id="painelBusca">
+            <div class="form-group col-md-4">
+                <label>Modelo</label>
+                <select id="modelo" class="input-large form-control">
+                    <option value="" selected="selected">Escolha o ano</option>
+                    <option value="gol">gol</option>
+                    <option value="fox">fox</option>
+                    <option value="fusca">fusca</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Marca</label>
+                <select id="marca" class="input-large form-control">
+                    <option value="" selected="selected">Escolha o ano</option>
+                    <option value="vw">vw</option>
+                    <option value="fiat">fiat</option>
+                    <option value="ferrari">ferrari</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
+                <label>Cor</label>
+                <select id="cor" class="input-large form-control">
+                    <option value="" selected="selected">Escolha o periodo</option>
+                    <option value="vermelho">vermelho</option>
+                    <option value="verde">verde</option>
+                </select>
+            </div>
+		</div>
+		<button id="busca" class="btn btn-primary col-md-offset-5">Buscar Carro</button>
+<br>
+<br>
+<br>
+		 <label for="basic-url" class="col-md-offset-3" >Busque pela placa de carro!</label>
+<div  class="input-group col-md-5 col-md-offset-3">
+  <span class="input-group-addon" id="placa">Placa</span>
+  <input type="text" class="form-control" id="basic-url" aria-describedby="basic-addon3">
+</div>
+<br>
+<button id="buscaPlaca" class="btn btn-primary col-md-offset-5">Buscar Placa</button>
+
+<br>
+
+
+<br>
+
+		<table class="table table-bordered">
+			<caption>Carros</caption>
+				<thead>
+					<tr>
+						<th>Placa</th>
+						<th>Modelo</th>
+						<th>Marca</th>
+						<th>Cor</th>
+					</tr>
+				</thead>
+				<tbody id="dadosCarro">
+				</tbody>
+		</table>
+  </body>
+</html>

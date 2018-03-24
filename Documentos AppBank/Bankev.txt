@@ -1,0 +1,50 @@
+Diagrama de casses e código
+
+* Administrador
+* Cliente
+* Suporte
+* Gerente
+
+ADMNISTRACAO * Suporte
+- Aprovar, criar usuários
+- Consultar Usuários
+- Lista de usuários existentes e seus dados * Administrador
+- Criar novos bancos
+- Delegar niveis de permissões
+
+
+
+BANCO DE INFORMACOES * Gerente * Suporte * Administrador
+- Movimento por Bancos
+- Movimento por Cliente
+- Contas atrasadas
+- Total de contas pagas
+- Tipo de contas
+
+
+CONTAS * Cliente * Administrador
+- Consultar Bancos
+- Consultar saldo em bancos
+- Realizar cadastro em novo banco mediante a aprovação do gerente responsalvel
+
+
+FATURAS * Contador * Gerente
+- Anaise de fatura e desempenho do usuário (Se ele é um bom pagador ou não)
+- Pagar contas
+- Concultar contas para pagar
+
+SALDO * Cliente * Gerente
+- Consultar Saldo por Banco
+
+
+USUÁRIO * Cliente * Administracao * Suporte
+- Editar informações pessoais
+
+
+
+######################
+Cadastrando usuário
+Cadastro de banco
+Cadastro de Admin
+Paga conta
+
