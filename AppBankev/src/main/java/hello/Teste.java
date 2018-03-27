@@ -1,4 +1,4 @@
-package APPBank;
+package hello;
 
 import static org.junit.Assert.*;
 
@@ -6,7 +6,7 @@ import java.time.LocalDate;
 
 import org.junit.Test;
 
-import APPBank.Modelo;
+import hello.Modelo;
 
 public class Teste {
 
