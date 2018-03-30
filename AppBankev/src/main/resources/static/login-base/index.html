@@ -33,10 +33,11 @@
 		
 		var usuario = document.getElementById("usuario_input").value;
 		var senha = document.getElementById("senha_input").value;
-		var url = "/login/"+usuario+senha+"";
-			//alert("Hello! I am an alert box!");
+		var url = "/usuario/"+usuario+senha+"";
+			//alert(document.getElementById("usuario_input").value);
 		$.getJSON(url, function(data){
 			if (data == True){
+				alert("ok!!!");
 				location.href = "../rootpage/index.html";
 			}else{
 				alert("Usuario ou senha invalidos!!")
@@ -104,7 +105,7 @@
 
 					<div class="container-login100-form-btn">
 						<button onclick="verificaUsuario()" id = "logar_bankev" class="login100-form-btn">
-							<a  href="static/rootpage/index.html"><!-- Retirar essa linha depois -->
+							<a  href="../rootpage/index.html"><!-- Retirar essa linha depois -->
 							Login
 						</a><!-- Retirar essa linha depois -->
 						</button>

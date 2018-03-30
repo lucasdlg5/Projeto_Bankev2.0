@@ -23,7 +23,7 @@ public class MainServer {
         port(port);
 
 		//Servir conteudo html, css e javascript
-		staticFileLocation("/static");
+		staticFileLocation("/static/");
 
 		inicializarUsuarios();
 
