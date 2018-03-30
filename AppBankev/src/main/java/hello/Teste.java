@@ -10,21 +10,30 @@ import hello.Modelo;
 
 public class Teste {
 
-	private static final Object True = null;
-
+//	private static final Object True = null;
+	
+	@Test
+	public void loginSistema() {
+		Modelo modelo = new Modelo();
+//		modelo.cadastrarUsuario(new Usuario("lucasdlg","123","josericardossss@email.com","sssssK2033J", new Saldo("sssK2033J", 100.0), new Conta(25.00,123456,false, LocalDate.of(2017,11,20))));
+		modelo.cadastrarUsuario(new Usuario("lucasdlg","123"));
+		assertEquals(modelo.logarUsuario("lucasdlg", "123"),true);
+		
+	}
+	
 	@Test
 	public void test() {
 		Modelo modelo = new Modelo();
 //		
 //		//Teste de cadastramento de Usuario
 //		
-		modelo.cadastrarUsuario(new Usuario("Jose_Ricardo","12345","josericardo@email.com","K2033J", new Saldo("K2033J", 100.0), new Conta(25.00,123456,false, LocalDate.of(2017,11,20))));
+//		modelo.cadastrarUsuario(new Usuario("Jose_Ricardo","12345","josericardo@email.com","K2033J", new Saldo("K2033J", 100.0), new Conta(25.00,123456,false, LocalDate.of(2017,11,20))));
 //		modelo.cadastrarUsuario(new Usuario("Ana_Brito","21548","anabrito@email.com","J8011K", new Saldo("J8011K", 100.0),new Conta(25.00,123456,false,LocalDate.of(2017,11,30))));
 //		modelo.cadastrarUsuario(new Usuario("Jose_Ricardo","12346","josericardo2017@email.com","K2034J", new Saldo("K2034J", 100.0),new Conta(25.00,123456,true,LocalDate.of(2017,12,01))));
 //		modelo.cadastrarUsuario(new Usuario("Rodrigo Melo","54321","rodrigomelo@email.com","K2033J", new Saldo("K2033J", 500.0),new Conta(25.00,123456,false,LocalDate.of(2017,11,13))));
 //		modelo.cadastrarUsuario(new Usuario("","","","",new Saldo("",0),new Conta(0.0,0,false,LocalDate.of(2017,11,13))));
 //		modelo.cadastrarUsuario(new Usuario("Cleber_Jose","66666","cleberjose2017@email.com","C2034J", new Saldo("C2034J", 1000.0),new Conta(125.00,9874563,false,LocalDate.of(2017,11,13))));
-		modelo.logarUsuario("Jose_Ricardo", "12345");
+//		modelo.logarUsuario("Jose_Ricardo", "12345");
 //		modelo.logarUsuario("Lucas_M", "l123");
 //		
 //		assertEquals(modelo.getUsuarios().size(),4);

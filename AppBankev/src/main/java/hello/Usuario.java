@@ -21,6 +21,11 @@ public class Usuario {
 		this.conta = conta;
 	}
 	
+	public Usuario(String user, String senha) {
+		this.user = user;
+		this.senha = senha;
+	}
+	
 	public String getUser() {
 		return user;
 	}

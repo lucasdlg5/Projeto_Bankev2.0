@@ -19,7 +19,7 @@ public class Controller {
 	
 	public void loginUsuario() {
 		get("/usuario/:username/:password", (req, res) ->{
-			Usuario usuarioLogando = new Usuario(req.params(":username"), req.params(":password"), null, null, null, null);
+			Usuario usuarioLogando = new Usuario(req.params(":username"), req.params(":password"));
 			boolean usuario_encontrado = modelo.logarUsuario(usuarioLogando.getUser(), usuarioLogando.getSenha());
 			return new Gson().toJson(usuario_encontrado);
 		});
