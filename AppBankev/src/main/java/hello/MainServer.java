@@ -23,10 +23,10 @@ public class MainServer {
         port(port);
 
 		//Servir conteudo html, css e javascript
+//        Modelo modelo = new Modelo();
 		staticFileLocation("/static/");
 
 		inicializarUsuarios();
-
 		Controller controller = new Controller(modelo);
 		
 		controller.loginUsuario();
