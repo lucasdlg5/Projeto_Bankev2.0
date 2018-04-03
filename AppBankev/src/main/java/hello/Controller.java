@@ -23,5 +23,13 @@ public class Controller {
 			return new Gson().toJson(usuario_encontrado);
 		});
 	}
+
+	public void listarUsuariosSistema() {
+		get("/buscaListUsuarios", (req, res) -> {
+			return new Gson().toJson(modelo.getUsuarios());
+			
+		});
+		
+	}
 	
 }

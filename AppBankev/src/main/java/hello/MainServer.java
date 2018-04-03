@@ -2,6 +2,7 @@ package hello;
 
 import static spark.Spark.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,15 +31,17 @@ public class MainServer {
 		Controller controller = new Controller(modelo);
 		
 		controller.loginUsuario();
+		
+		controller.listarUsuariosSistema();
 				
     }
     
     public static void inicializarUsuarios(){
 //    	List<Usuario> database = new ArrayList<Usuario>();
 
-    	modelo.cadastrarUsuario(new Usuario("lucasdlg", "123","1@1.com", null, null, null));
-//    	modelo.cadastrarUsuario(new Usuario("lucasdlg2", "1232"));
-//    	modelo.cadastrarUsuario(new Usuario("admin123", "admin123"));
+    	modelo.cadastrarUsuario(new Usuario("lucasdlg", "123", "1@1.com", "teste1", new Saldo("sssK2033J", 100.0), new Conta(25.00,123456,false, LocalDate.of(2017,11,20))	));
+    	modelo.cadastrarUsuario(new Usuario("lucasdlg2", "1232"));
+    	modelo.cadastrarUsuario(new Usuario("admin123", "admin123"));
     	modelo.cadastrarUsuario(new Usuario("1", "123456"));
     	
 //		database.add(new Usuario("lucasdlg", "123", "1@1.com", null, null, null));

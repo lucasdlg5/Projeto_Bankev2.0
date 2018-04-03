@@ -39,12 +39,14 @@ public class Modelo {
 	private List<Admin> admins = new LinkedList<Admin>();
 
 	public void cadastrarUsuario(Usuario usuario) {
-		if (!usuario.getUser().equals("") || !usuario.getSenha().equals("") || !usuario.getEmail().equals("")
+		usuarios.add(usuario);
+		
+		/*if (!usuario.getUser().equals("") || !usuario.getSenha().equals("") || !usuario.getEmail().equals("")
 				|| !usuario.getNumeroDaConta().equals("")) {
 			if (contasRepetidas(usuario.getEmail(), usuario.getNumeroDaConta())) {
 				usuarios.add(usuario);
 			}
-		}
+		}*/
 	}
 
 	public void cadastrarBanco(Banco banco) {
