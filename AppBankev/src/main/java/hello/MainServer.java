@@ -34,12 +34,13 @@ public class MainServer {
     }
     
     public static void inicializarUsuarios(){
-    	List<Usuario> database = new ArrayList<Usuario>();
+//    	List<Usuario> database = new ArrayList<Usuario>();
 
-//    	modelo.cadastrarUsuario(new Usuario("lucasdlg", "123"));
+    	modelo.cadastrarUsuario(new Usuario("lucasdlg", "123","1@1.com", null, null, null));
 //    	modelo.cadastrarUsuario(new Usuario("lucasdlg2", "1232"));
 //    	modelo.cadastrarUsuario(new Usuario("admin123", "admin123"));
-    	modelo.cadastrarUsuario(new Usuario("1", "1"));
+    	modelo.cadastrarUsuario(new Usuario("1", "123456"));
+    	
 //		database.add(new Usuario("lucasdlg", "123", "1@1.com", null, null, null));
 //		database.add(new Usuario("kevao", "1234", "2@2.com", null, null, null));
 //		database.add(new Usuario("karinao", "1235", "3@3.com", null, null, null));

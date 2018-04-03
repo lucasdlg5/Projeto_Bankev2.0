@@ -49,6 +49,8 @@
                 //VERIFICAR PORQUE NAO ESTA EXECUTANDO A FUNCAO GET JSON E SO FUNCIONA ATRAVES DE FUNCtION E NAO COM $(document).ready
                     alert("Iniciando o script...");
             		$("#dadosUsuario").empty();
+                    var url = "/busca/"+
+                    //Fazer a rota e a função dentro do java para buscar todas as informacoes a serem exibidas na tabea abaixo.
             		$.getJSON(url, function(data) {
                         alert("Puxando informacoes..");
                         alert(data);
