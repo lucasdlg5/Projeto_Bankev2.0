@@ -1,10 +1,9 @@
 package hello;
 
-import static spark.Spark.*;
+import static spark.Spark.port;
+import static spark.Spark.staticFileLocation;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 
 public class MainServer {
@@ -33,6 +32,10 @@ public class MainServer {
 		controller.loginUsuario();
 		
 		controller.listarUsuariosSistema();
+		
+		controller.listarumUnicoUsuariosSistema();
+		
+		controller.cadastrarUsuario();
 				
     }
     
@@ -41,7 +44,7 @@ public class MainServer {
 
     	modelo.cadastrarUsuario(new Usuario("lucasdlg", "123", "1@1.com", "teste1", new Saldo("sssK2033J", 100.0), new Conta(25.00,123456,false, LocalDate.of(2017,11,20))	));
     	modelo.cadastrarUsuario(new Usuario("lucasdlg2", "1232"));
-    	modelo.cadastrarUsuario(new Usuario("admin123", "admin123"));
+    	modelo.cadastrarUsuario(new Usuario("admin123", "admin123", "2@2.com","teste1", new Saldo("sssK2033J", 100.0), new Conta(25.00,123456,false, LocalDate.of(2017,11,20))));
     	modelo.cadastrarUsuario(new Usuario("1", "123456"));
     	
 //		database.add(new Usuario("lucasdlg", "123", "1@1.com", null, null, null));

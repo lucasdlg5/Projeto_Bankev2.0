@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    
+<head>
+    <meta charset="utf-8"></meta>
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    ></meta>
+
+    <meta
+    name="description"
+    content=""
+    ></meta>
+
+    <meta
+    name="author"
+    content=""
+    ></meta>
+
+    <title>
+        Bankev Inc.
+    </title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link
+    href="../vendor/bootstrap/css/bootstrap.min.css"
+    rel="stylesheet"
+    ></link>
+
+    <!-- Custom styles for this template -->
+
+    <link
+    href="../css/simple-sidebar.css"
+    rel="stylesheet"
+    ></link>
+            
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../index.html">Bankev</a>
+                </li>
+
+                <li>
+                    <a href="administracao.html">Administração</a>
+                </li>
+
+                <li>
+                    <a href="banco_info.html">Bancos em meu CPF</a>
+                </li>
+
+                <li>
+                    <a href="contas.html">Contas a pagar</a>
+                </li>
+
+                <li>
+                    <a href="faturas.html">Faturas de cartão</a>
+                </li>
+
+                <li>
+                    <a href="saldo.html">Saldo de bancos</a>
+                </li>
+
+                <li>
+                    <a href="usuario.html">Perfil</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                <a
+                    href="#menu-toggle"
+                    class="btn btn-primary"
+                    id="menu-toggle"
+                >Abrir Menu</a>
+
+                <br>
+
+                <br>
+
+                <body>
+    <div class="col-sm-12">     
+        <h1 class="h3 mb-3 font-weight-normal">Area Admin...Insira o nome de usuario:</h1>
+        
+        <div id="painelBusca">            
+            <div class="form-group col-md-3">
+               <label for="lblpesq" class="sr-only">Pesquise uma bebida:</label>
+                <input type="pesquisa" id="txtPesq" class="form-control" placeholder="Username" required="" autofocus="">
+            </div>  
+            <button id="busca" class="btn btn-success col-offset-0">Pesquisar</button>
+           <!-- <button id="login" class="btn btn-danger col-offset-0">Logout</button> -->
+        </div>
+        
+        
+        <table class="table table-bordered"> 
+            <!--<caption>Bebidas</caption>-->
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>E-mail</th>
+                        <th>Numero Conta</th>
+                        <th>Conta</th>
+                    </tr> 
+                </thead> 
+                
+                <tbody id="dadosUsuario"> 
+                    
+                </tbody> 
+        </table>
+                    <!--<div class="row">
+                        <li class="list-group-item active col-sm-3">Username</li>
+                        <li class="list-group-item active col-sm-3"> Data cadastrado</li>
+                        <li class="list-group-item active col-sm-3"> Ultimo Acesso</li>
+                        <li class="list-group-item active col-sm-3"> Quantidade Bancos</li>
+                        
+                        
+                    </div>
+                    
+                    <div class="row">
+                    <li class="col-sm-3 list-group-item d-flex justify-content-between align-items-center "> Cras justo odio
+                         
+                    </li>
+                    
+                    <span class="badge col-sm-3 list-group-item d-flex justify-content-between align-items-center">__/__/__</span>
+                    
+                    <span class="badge col-sm-3 list-group-item d-flex justify-content-between align-items-center">__/__/__</span>
+                    
+                    <span class="badge col-sm-3 list-group-item d-flex justify-content-between align-items-center">0</span>
+                       
+                    </div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+                <!-- <h1>Bem-vindo ao Banco Online Bankev!</h1>
+                <p>Aqui você poderá gerenciar todos os tipos de funções que deseja</p>
+                <p>Utilize o botão abaixo para abrir o painel de opções à esquerda.</p> -->
+            </div>
+        </div>
+
+        <!-- /#page-content-wrapper -->
+    </div>
+
+    <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Menu Toggle Script -->
+
+    <script>
+
+            $(document).ready(function(){
+                $("#busca").click(function() {
+
+                var usuario = $("#txtPesq" ).val();
+                    
+                $("#dadosUsuario").empty();
+                    
+                var url = "/buscaListUsuarios/"+usuario+"";
+                    
+
+                $.getJSON(url, function(data) {
+                        
+                        var itens = [];
+                        
+                        $.each(data, function(i){
+                        
+                            itens.push("<tr> <td>"+ this.user +"</td><td>"+ this.email +"</td><td>"+ this.numeroDaConta + "</td><td>"+ this.conta + "</td></tr>");
+                            
+                        });
+                                    
+                        $("#dadosUsuario").append(itens);
+                        
+                });
+
+            });
+
+
+
+            });
+                
+                
+            </script>
+</body>
+</html>

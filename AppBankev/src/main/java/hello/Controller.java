@@ -3,11 +3,11 @@
 package hello;
 import static spark.Spark.get;
 
+import java.util.List;
+
 //import java.util.ArrayList;
 //import java.util.List;
 import com.google.gson.Gson;
-
-import spark.Route;
 public class Controller {
 
 	private Modelo modelo;
@@ -30,6 +30,23 @@ public class Controller {
 			
 		});
 		
+	}
+	
+	public void listarumUnicoUsuariosSistema() {
+		get("/buscaListUsuarios/:usuario", (req, res) -> {
+			List<Usuario> UsuariosEncontrados = modelo.buscarUsuarioPorUser(req.params(":usuario"));
+			return new Gson().toJson(UsuariosEncontrados);
+			
+		});
+		
+	}
+	
+	public void cadastrarUsuario() {
+		get("/addUsuario/:nomecompleto/:email/:user/:senha",(req,res)->{
+			
+			modelo.cadastrarUsuario(new Usuario(req.params(":nomecompleto"),req.params(":email"),req.params(":user"),req.params(":senha")));
+			return new Gson().toJson(modelo.getUsuarios());
+		});
 	}
 	
 }

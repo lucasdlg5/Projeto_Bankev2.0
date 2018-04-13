@@ -2,6 +2,7 @@ package hello;
 
 public class Usuario {
 	
+	private String nomeCompleto;
 	private String user;
 	private String senha;
 	private String email;
@@ -10,7 +11,12 @@ public class Usuario {
 	private Conta conta;
 	
 	
-
+	public Usuario(String nomecompleto,String email,String user,String senha) {
+		this.nomeCompleto=nomecompleto;
+		this.email=email;
+		this.user=user;
+		this.senha=senha;
+	}
 
 	public Usuario(String user, String senha, String email,String numeroDaConta, Saldo saldo,Conta conta) {
 		this.user = user;

@@ -43,31 +43,32 @@
 
 					<div class="wrap-input100 validate-input" data-validate="É necessário inserir seu nome completo!">
 						<span class="label-input100">Nome Completo</span>
-						<input class="input100" type="text" name="name" placeholder="Fulano de tal...">
+						<input class="input100" type="text" id="nomeCompleto" name="name" placeholder="Fulano de tal...">
+						
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "É preciso colocar um email valido, exemplo: ex@abc.xyz">
 						<span class="label-input100">Email</span>
-						<input class="input100" type="text" name="email" placeholder="Seu email...">
+						<input class="input100" type="text" id="email" name="email" placeholder="Seu email...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="É necessário um nomede usuário!">
 						<span class="label-input100">Username</span>
-						<input class="input100" type="text" name="username" placeholder="Username...">
+						<input class="input100" type="text" id="user" name="username" placeholder="Username...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "É nessesário inserir uma senha!">
 						<span class="label-input100">Senha</span>
-						<input class="input100" type="text" name="pass" placeholder="*************">
+						<input class="input100" type="text  name="pass" id = "senha" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "É nessesário repetir a senha novamente!">
 						<span class="label-input100">Repita a Senha</span>
-						<input class="input100" type="text" name="repeat-pass" placeholder="*************">
+						<input class="input100" type="text" name="repeat-pass" id="sennhaConfirm" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -90,11 +91,7 @@
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
-								<a href="../login-base/index.html" > <!-- Retirar essa linha depois -->
-							Registrar
-						</a><!-- Retirar essa linha depois -->
-							</button>
+							<button onclick="verificaUsuario()" id="cadastro" class="btn btn-primary col-offset-0">Cadastrar</button>
 						</div>
 
 						<a href="../login-base/index.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
@@ -106,7 +103,42 @@
 			</div>
 		</div>
 	</div>
-	
+		<script>
+		function verificaUsuario(){
+			alert('ok');
+			
+				alert('entrou na funcao');
+				var nomecompleto = $("#nomeCompleto").val();
+				var email = $("#email").val();        		
+        		var user = $("#user").val();
+        		var senha = $("#senha").val();
+        		var sennhaConfirm = $('#sennhaConfirm').val();
+				
+				$("#dadosPessoa").empty();
+
+				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"";
+				alert(url);
+				$.getJSON(url, function(data) {
+
+						var itens = [];
+
+						$.each(data, function(i){
+							
+							itens.push("<tr> <td>"+ this.nomecompleto +"</td><td>"+ this.email +"</td><td>"+ this.user + "</td><td>"+ this.senha + "</td></tr>");
+												
+						});
+						alert(itens);
+
+						$("#dadosPessoa").append(itens);
+
+				});
+
+			
+
+
+		};
+		</script>
+
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
