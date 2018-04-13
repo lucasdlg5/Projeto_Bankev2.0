@@ -62,18 +62,22 @@
             		$.getJSON(url, function(data) {
                        // var size = Object.size(data);
                         //alert("Puxando informacoes..");
-                        console.log(data.length);
-                        //console.log(data);
+                        //console.log(data.length);
+                        console.log(data);
             			var itensUsuList = [];
-                        for ($i = 0; $i == data.length; $i++){
+                        //for ($i = 0; $i == data.length; $i++){
+                            $.each(data,function(i){
+                                itensUsuList.push("<tr> <td>"+ this.user +"</td><td>"+ this.email + "</td><td>"+ this.numeroDaConta + "</td><td>");
+                        
+
+                            });
                           //  alert("executei" +$i +"vezes");
                           //ARRUMAR COM QUE A VARIAVEL $I funcione
-                        itensUsuList.push("<tr> <td>"+ data[i].user +"</td><td>"+ data[i].email + "</td><td>"+ data[i].numeroDaConta + "</td><td>");
                         if($("#dadosUsuario").empty()){
                       //      alert("Inserindo na Lista...");
                             $("#dadosUsuario").append(itensUsuList);
                         }
-                        }
+                       // }
                     });
                 //VERIFICAR PORQUE NAO ESTA EXECUTANDO A FUNCAO GET JSON E SO FUNCIONA ATRAVES DE FUNCtION E NAO COM $(document).ready
             //});
