@@ -41,10 +41,11 @@
 			//alert ("Debug: Retorno da função: "+data);
 			if (data == true){
 			//	alert("Debug: Usuario e senha encontrados na funcao!!!");
+				document.cookie = 1;
+				alert(document.cookie);
 				location.href = "../rootpage/index.html";
 			}else{
-				alert("Usuario ou senha invalidos!!")
-				
+				alert("Usuario ou senha invalidos!!");
 			}
 		});
 

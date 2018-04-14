@@ -35,6 +35,18 @@
         href="css/simple-sidebar.css"
         rel="stylesheet"
     ></link>
+
+    <script>
+    window.onload = function verCook() {
+        //var cook = document.cookie;
+        if (document.cookie != "1"){
+            console.log("Nao");
+            alert(document.cookie);
+            alert("É necessario fazer login!!");
+            location.href = "../login-base/index.html";
+        }
+    }
+    </script>
 </head>
 
 <body>

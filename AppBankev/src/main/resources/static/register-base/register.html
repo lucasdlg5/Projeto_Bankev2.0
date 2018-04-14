@@ -62,7 +62,7 @@
 
 					<div class="wrap-input100 validate-input" data-validate = "É nessesário inserir uma senha!">
 						<span class="label-input100">Senha</span>
-						<input class="input100" type="text  name="pass" id = "senha" placeholder="*************">
+						<input class="input100" type="text"  name="pass" id = "senha" placeholder="*************">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -117,20 +117,15 @@
 				$("#dadosPessoa").empty();
 
 				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"";
+				
 				alert(url);
 				$.getJSON(url, function(data) {
-
-						var itens = [];
-
-						$.each(data, function(i){
-							
-							itens.push("<tr> <td>"+ this.nomecompleto +"</td><td>"+ this.email +"</td><td>"+ this.user + "</td><td>"+ this.senha + "</td></tr>");
-												
-						});
-						alert(itens);
-
-						$("#dadosPessoa").append(itens);
-
+				//		var itens = [];
+				//		$.each(data, function(i){
+				//			itens.push("<tr> <td>"+ this.nomecompleto +"</td><td>"+ this.email +"</td><td>"+ this.user + "</td><td>"+ this.senha + "</td></tr>");						
+				//		});
+				//		alert(itens);
+				//		$("#dadosPessoa").append(itens);
 				});
 
 			
