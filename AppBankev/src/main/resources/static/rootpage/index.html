@@ -37,14 +37,47 @@
     ></link>
 
     <script>
+
+        
+  function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+
+  function checkCookie() {
+    var user=getCookie("statusLogin");
+	//alert(user);
+    if (user != "") {
+        //alert("Esta armazenado! " + user);
+    } else {
+       //user = prompt("Please enter your name:","");
+       //if (user != "" && user != null) {
+		   alert("É Necessário que faça o login!!");
+           location.href = "../login-base/index.html";
+           //setCookie("statusLogin", "ok", 30);
+       //}
+    }
+}
     window.onload = function verCook() {
         //var cook = document.cookie;
-        if (document.cookie != "ok"){
-            console.log("Nao");
-            alert(document.cookie);
-            alert("É necessario fazer login!!");
-            location.href = "../login-base/index.html";
-        }
+        checkCookie ();
+        //if (document.cookie != "ok"){
+        //    console.log("Nao");
+        //    alert(document.cookie);
+        //    alert("É necessario fazer login!!");
+        //    location.href = "../login-base/index.html";
+        //}
     }
     </script>
 </head>

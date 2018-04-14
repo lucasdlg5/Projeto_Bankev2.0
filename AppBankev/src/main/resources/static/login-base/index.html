@@ -30,33 +30,62 @@
 <script language="JavaScript">
 
 
-
-	function verificaUsuario() {
-		
-		var usuario = document.getElementById("usuario_input").value;
-		var senha = document.getElementById("senha_input").value;
-		var url = "/usuario/"+usuario+"/"+senha+"";
-		$.getJSON(url, function(data){
-			if (data == true){
-				document.cookie = "ok";
-				alert(document.cookie);
-				location.href = "../rootpage/index.html";
-			}else{
-				alert("Usuario ou senha invalidos!!");
-			}
-		});
+function setCookie(cname,cvalue,exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays*24*60*60*1000));
+    var expires = "expires=" + d.toGMTString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
 }
 
-//$(document).ready(function(){
-//	
-//	$("#logar_bankev").click(function(){
-//		alert("aaaaaaaaa");
-		//location.href = "http://google.com";
-//		
-//		
-//	});
+  function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
 
-//});
+function checkCookie() {
+    var user=getCookie("statusLogin");
+	//alert(user);
+    if (user != "") {
+       // alert("Esta armazenado! " + user);
+    } else {
+       //user = prompt("Please enter your name:","");
+       //if (user != "" && user != null) {
+		  // alert("Nao esta armazenado ainda...");
+           setCookie("statusLogin", "ok", 30);
+       //}
+    }
+}
+
+function verificaUsuario() {	
+	var usuario = document.getElementById("usuario_input").value;
+	var senha = document.getElementById("senha_input").value;
+	var url = "/usuario/"+usuario+"/"+senha+"";
+	$.getJSON(url, function(data){
+		if (data == true){
+			
+			checkCookie();
+
+			//document.cookie = "ok";			
+			//alert(document.cookie);
+
+
+			location.href = "../rootpage/index.html";
+		}else{
+			alert("Usuario ou senha invalidos!!");
+		}
+	});
+}
 
 </script>
 
