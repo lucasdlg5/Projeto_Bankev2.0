@@ -35,7 +35,9 @@ public class MainServer {
 		
 		controller.listarumUnicoUsuariosSistema();
 		
-		controller.cadastrarUsuario();
+		controller.cadastrarUsuario();	
+		
+		controller.cadastrarSaldo();
 				
     }
     

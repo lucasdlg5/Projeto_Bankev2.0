@@ -37,6 +37,8 @@ public class Modelo {
 	private List<Banco> bancos = new LinkedList<Banco>();
 
 	private List<Admin> admins = new LinkedList<Admin>();
+	
+	private List<Saldo> saldos = new LinkedList<Saldo>();
 
 	public void cadastrarUsuario(Usuario usuario) {
 		usuarios.add(usuario);
@@ -122,7 +124,26 @@ public class Modelo {
 		}
 		return null;
 	}
+	//////////////////////
+	
+	public String buscarSaldoCriado(String numeroDaContaSaldo) {
+		for (Usuario usuario : usuarios) {
+			if (usuario.getNumeroDaConta().equals(numeroDaContaSaldo))
+				return usuario.getNumeroDaConta();
+		}
+		return null;
+	}
 
+	public Boolean cadastrarSaldo(Saldo saldo) {
+		if (buscarSaldoCriado(saldo.getNumeroDaContaSaldo()).equals(saldo.getNumeroDaContaSaldo())) {
+			return false;
+		}else {
+			 saldos.add(saldo);
+			return true;
+		}
+	}
+	
+	///////////////////////
 	public boolean pagarConta(int codigoBarra, Double valorFatura, Boolean pago) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getConta().getCodigoBarra() == codigoBarra

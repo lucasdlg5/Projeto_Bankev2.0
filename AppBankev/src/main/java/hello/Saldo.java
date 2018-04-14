@@ -10,6 +10,10 @@ public class Saldo {
 		this.valor = valor;
 	}
 	
+	public Saldo (String numeroDaContaSaldo) {
+		this.numeroDaContaSaldo = numeroDaContaSaldo;
+		this.valor = 0;
+	}
 	public String getNumeroDaContaSaldo() {
 		return numeroDaContaSaldo;
 	}

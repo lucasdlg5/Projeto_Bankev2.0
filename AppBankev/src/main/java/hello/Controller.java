@@ -8,6 +8,8 @@ import java.util.List;
 //import java.util.ArrayList;
 //import java.util.List;
 import com.google.gson.Gson;
+
+import spark.Route;
 public class Controller {
 
 	private Modelo modelo;
@@ -48,5 +50,15 @@ public class Controller {
 			return new Gson().toJson(modelo.getUsuarios());
 		});
 	}
+	
+	public void cadastrarSaldo() {
+		get ("/addSaldo/:nConta",(req,res)->{
+			
+			//modelo.cadastrarSaldo(new Saldo(req.params(":nConta")));
+			return new Gson().toJson(modelo.cadastrarSaldo(new Saldo(req.params(":nConta"))));
+		});
+	}
+
+
 	
 }

@@ -33,42 +33,30 @@
 	
 	<div class="limiter">
 		<div class="container-login100">
-			<div class="login100-more" style="background-image: url('images/bg-01.jpg');"></div>
+			<div class="login100-more" style="background-image: url('images/bg-02.jpg');"></div>
 
 			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
 				<form class="login100-form validate-form">
 					<span class="login100-form-title p-b-59">
-						Cadastre-se agora! :D
+						Não esqueça de cadastrar seu banco!
 					</span>
 
 					<div class="wrap-input100 validate-input" data-validate="É necessário inserir seu nome completo!">
-						<span class="label-input100">Nome Completo</span>
-						<input class="input100" type="text" id="nomeCompleto" name="name" placeholder="Fulano de tal...">
+						<span class="label-input100">E-mail</span>
+						<input class="input100" type="text" id="email" name="email" placeholder="fulano_de_tal@hotmail.com">
 						
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "É preciso colocar um email valido, exemplo: ex@abc.xyz">
-						<span class="label-input100">Email</span>
-						<input class="input100" type="text" id="email" name="email" placeholder="Seu email...">
+						<span class="label-input100">Selecione um Banco (primeiro nome)</span>
+						<input class="input100" type="text" id="nomeBanco" name="nomeBanco" placeholder="Santander...">
 						<span class="focus-input100"></span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="É necessário um nomede usuário!">
-						<span class="label-input100">Username</span>
-						<input class="input100" type="text" id="user" name="username" placeholder="Username...">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "É nessesário inserir uma senha!">
-						<span class="label-input100">Senha</span>
-						<input class="input100" type="password"  name="pass" id = "senha" placeholder="*************">
-						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "É nessesário repetir a senha novamente!">
-						<span class="label-input100">Repita a Senha</span>
-						<input class="input100" type="password" name="repeat-pass" id="sennhaConfirm" placeholder="*************">
+						<span class="label-input100">Insira o número da conta</span>
+						<input class="input100" type="text" id="nConta" name="nConta" placeholder="009999...">
 						<span class="focus-input100"></span>
 					</div>
 
@@ -108,26 +96,28 @@
 			alert('ok');
 			
 				alert('entrou na funcao');
-				var nomecompleto = $("#nomeCompleto").val();
-				var email = $("#email").val();        		
-        		var user = $("#user").val();
-        		var senha = $("#senha").val();
-        		var sennhaConfirm = $('#sennhaConfirm').val();
+				var email = $("#email").val();
+				var nomeBanco = $("#nomeBanco").val();        		
+        		var nConta = $("#nConta").val();
+				
 				
 				$("#dadosPessoa").empty();
 
-				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"";
+				//ARRUMAR A FUNÇÃO PARA CADASTRAR UMA CONTA PARA O CPF CADASTRADO
+				var url = "/addSaldo/"+nConta+"";
 				
 				alert(url);
 				$.getJSON(url, function(data) {
+				
+				console.log(data);
 				//		var itens = [];
 				//		$.each(data, function(i){
 				//			itens.push("<tr> <td>"+ this.nomecompleto +"</td><td>"+ this.email +"</td><td>"+ this.user + "</td><td>"+ this.senha + "</td></tr>");						
 				//		});
 				//		alert(itens);
 				//		$("#dadosPessoa").append(itens);
-				alert("a");
-				location.href = "register-banco.html";
+				alert("enviouJson");
+				location.href = "../login-base/index.html";
 				});
 
 			
