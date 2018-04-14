@@ -29,34 +29,22 @@
 
 <script language="JavaScript">
 
+
+
 	function verificaUsuario() {
 		
 		var usuario = document.getElementById("usuario_input").value;
 		var senha = document.getElementById("senha_input").value;
 		var url = "/usuario/"+usuario+"/"+senha+"";
-			//alert(document.getElementById("usuario_input").value);
-			//alert (url);
 		$.getJSON(url, function(data){
-			//alert ("Debug: Rota das informações: "+url);
-			//alert ("Debug: Retorno da função: "+data);
 			if (data == true){
-			//	alert("Debug: Usuario e senha encontrados na funcao!!!");
-				document.cookie = 1;
+				document.cookie = "ok";
 				alert(document.cookie);
 				location.href = "../rootpage/index.html";
 			}else{
 				alert("Usuario ou senha invalidos!!");
 			}
 		});
-
-//DEBUG
-			//var data = 1;
-			//if (data == 1){
-			//	alert("Entrou")
-			//location.href = "../rootpage/index.html";
-			//}else{
-			//	alert("Usuario ou senha invalidos!!")
-			//};
 }
 
 //$(document).ready(function(){
