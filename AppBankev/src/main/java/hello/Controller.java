@@ -8,8 +8,6 @@ import java.util.List;
 //import java.util.ArrayList;
 //import java.util.List;
 import com.google.gson.Gson;
-
-import spark.Route;
 public class Controller {
 
 	private Modelo modelo;
@@ -34,6 +32,27 @@ public class Controller {
 		
 	}
 	
+	public void buscarSaldo() {
+		get("/buscarSaldo/:numeroConta",(req,res)->{
+			List<Saldo> SaldoEncontrado = modelo.buscarSaldo(req.params(":numeroConta"));
+			return new Gson().toJson(SaldoEncontrado);
+		});
+	}
+	
+	public void confBanco() {
+		get("/confBanco/:cpf",(req,res)->{
+			boolean resp= modelo.confBankEx(req.params(":cpf"));
+			return new Gson().toJson(resp);
+		});
+	}
+	
+	public void listarConta() {
+		get("/buscarConta/:cpf/:numeroConta",(req,res)->{
+			List<Conta> ContaEncontrada = modelo.buscarContaUsuario(req.params(":cpf"), req.params(":numeroConta"));
+			return new Gson().toJson(ContaEncontrada);
+		});
+	}
+	
 	public void listarumUnicoUsuariosSistema() {
 		get("/buscaListUsuarios/:usuario", (req, res) -> {
 			List<Usuario> UsuariosEncontrados = modelo.buscarUsuarioPorUser(req.params(":usuario"));
@@ -44,21 +63,11 @@ public class Controller {
 	}
 	
 	public void cadastrarUsuario() {
-		get("/addUsuario/:nomecompleto/:email/:user/:senha/:cpf",(req,res)->{
+		get("/addUsuario/:nomecompleto/:cpf/:email/:user/:senha/:numeroDaConta",(req,res)->{
 			
-			modelo.cadastrarUsuario(new Usuario(req.params(":nomecompleto"),req.params(":email"),req.params(":user"),req.params(":senha"),req.params(":cpf")));
+			modelo.cadastrarUsuario(new Usuario(req.params(":nomecompleto"),req.params(":cpf"),req.params(":email"),req.params(":user"),req.params(":senha"),req.params("numeroDaConta")));
 			return new Gson().toJson(modelo.getUsuarios());
 		});
 	}
-	
-	public void cadastrarSaldo() {
-		get ("/addSaldo/:nConta",(req,res)->{
-			
-			//modelo.cadastrarSaldo(new Saldo(req.params(":nConta")));
-			return new Gson().toJson(modelo.cadastrarSaldo(new Saldo(req.params(":nConta"))));
-		});
-	}
-
-
 	
 }

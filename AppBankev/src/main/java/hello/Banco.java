@@ -2,23 +2,29 @@ package hello;
 
 public class Banco {
 	
-	private int id;
+	
+	private String cpf;
 	private String nomeBanco;
 	private String email;
 	
 	
-	public Banco(int id, String nomeBanco, String email) {
-		this.id = id;
+	public Banco(String cpf, String nomeBanco, String email) {
+		this.cpf = cpf;
 		this.nomeBanco = nomeBanco;
 		this.email = email;
 	}
 	
-	public int getId() {
-		return id;
+	
+	public String getCpf() {
+		return cpf;
 	}
-	public void setId(int id) {
-		this.id = id;
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
 	}
+
+
 	public String getNomeBanco() {
 		return nomeBanco;
 	}

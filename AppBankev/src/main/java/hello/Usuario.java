@@ -3,33 +3,43 @@ package hello;
 public class Usuario {
 	
 	private String nomeCompleto;
+	private String cpf;
 	private String user;
 	private String senha;
 	private String email;
 	private String numeroDaConta;
-	private Saldo saldo;
-	private Conta conta;
-	private String cpf;
 	
-	
-	public Usuario(String nomecompleto,String email,String user,String senha, String cpf) {
+	public Usuario( String nomecompleto,String cpf,String email,String user,String senha,String numeroDaConta) {
 		this.nomeCompleto=nomecompleto;
 		this.email=email;
 		this.user=user;
 		this.senha=senha;
+		this.cpf=cpf;
+		this.numeroDaConta=numeroDaConta;
+		
+	}
+
+	
+	public String getNomeCompleto() {
+		return nomeCompleto;
+	}
+
+
+	public void setNomeCompleto(String nomeCompleto) {
+		this.nomeCompleto = nomeCompleto;
+	}
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 
-	public Usuario(String user, String senha, String email,String numeroDaConta, Saldo saldo,Conta conta, String cpf) {
-		this.user = user;
-		this.senha = senha;
-		this.email = email;
-		this.numeroDaConta = numeroDaConta;
-		this.saldo = saldo;
-		this.conta = conta;
-		this.cpf = cpf;
-	}
-	
+
 	public Usuario(String user, String senha) {
 		this.user = user;
 		this.senha = senha;
@@ -59,22 +69,5 @@ public class Usuario {
 	public void setNumeroDaConta(String numeroDaConta){
 		this.numeroDaConta = numeroDaConta;
 	}
-	
-	public Saldo getSaldo() {
-		return saldo;
-	}
-
-	public void setSaldo(Saldo saldo) {
-		this.saldo = saldo;
-	}
-
-	public Conta getConta() {
-		return conta;
-	}
-
-	public void setConta(Conta conta) {
-		this.conta = conta;
-	}
-	
 
 }

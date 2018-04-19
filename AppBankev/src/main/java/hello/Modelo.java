@@ -38,25 +38,24 @@ public class Modelo {
 
 	private List<Admin> admins = new LinkedList<Admin>();
 	
+	private List<Conta> contas= new LinkedList<Conta>();
+	
 	private List<Saldo> saldos = new LinkedList<Saldo>();
 
 	public void cadastrarUsuario(Usuario usuario) {
 		usuarios.add(usuario);
-		
-		/*if (!usuario.getUser().equals("") || !usuario.getSenha().equals("") || !usuario.getEmail().equals("")
-				|| !usuario.getNumeroDaConta().equals("")) {
-			if (contasRepetidas(usuario.getEmail(), usuario.getNumeroDaConta())) {
-				usuarios.add(usuario);
-			}
-		}*/
+	}
+	
+	public void cadastrarConta(Conta conta) {
+		contas.add(conta);
+	}
+	
+	public void cadastrarSaldo(Saldo saldo) {
+		saldos.add(saldo);
 	}
 
 	public void cadastrarBanco(Banco banco) {
-		if (!(banco.getId() == 0) || !banco.getNomeBanco().equals("") || !banco.getEmail().equals("")) {
-			if (bancosRepetidos(banco.getNomeBanco(), banco.getId())) {
-				bancos.add(banco);
-			}
-		}
+		bancos.add(banco);
 	}
 
 	public void cadastrarAdmin(Admin admin) {
@@ -81,14 +80,29 @@ public class Modelo {
 		return true;
 	}
 
-	public boolean bancosRepetidos(String nomeBanco, int id) {
-		for (Banco banco : bancos) {
-			if (banco.getNomeBanco().equals(nomeBanco) || banco.getId() == id)
-				return false;
-		}
-		return true;
-	}
 
+	
+	public List<Saldo> buscarSaldo(String numeroConta){
+		List<Saldo> saldoEncontrada = new LinkedList<Saldo>();
+		for(Saldo saldo:this.saldos) {
+			if(saldo.getNumeroDaContaSaldo().equals(numeroConta));
+			saldoEncontrada.add(saldo);
+		}
+		return saldoEncontrada;
+	}
+	
+	public List<Conta> buscarContaUsuario(String cpf,String numeroDaConta){
+		List<Conta> contaEncontrada = new LinkedList<Conta>();
+		for(Conta conta:this.contas) {
+			if(conta.getCpf().equals(cpf)) {
+				contaEncontrada.add(conta);
+			}
+				
+		}
+		return contaEncontrada;
+	}
+	 
+	
 	public List<Usuario> buscarUsuarioPorUser(String user) {
 		List<Usuario> userEncontrados = new LinkedList<Usuario>();
 		for (Usuario usuario : this.usuarios) {
@@ -109,6 +123,23 @@ public class Modelo {
 
 	}
 
+	public boolean confBankEx(String cpf) {
+		int conf=0;
+		for (Banco banco:bancos) {
+			if (banco.getCpf().equals(cpf)) {
+				conf=conf+1;
+			}
+		}
+		if (conf>0) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+	
+	
+	
 	public boolean logarUsuario(String user, String senha) {
 		for (Usuario usuario : usuarios) {
 			if (usuario.getUser().equals(user) && usuario.getSenha().equals(senha))
@@ -117,43 +148,6 @@ public class Modelo {
 		return false;
 	}
 
-	public Double buscarSaldo(String numeroDaContaSaldo) {
-		for (Usuario usuario : usuarios) {
-			if (usuario.getNumeroDaConta().equals(numeroDaContaSaldo))
-				return usuario.getSaldo().getValor();
-		}
-		return null;
-	}
-	//////////////////////
-	
-	public String buscarSaldoCriado(String numeroDaContaSaldo) {
-		for (Usuario usuario : usuarios) {
-			if (usuario.getNumeroDaConta().equals(numeroDaContaSaldo))
-				return usuario.getNumeroDaConta();
-		}
-		return null;
-	}
-
-	public Boolean cadastrarSaldo(Saldo saldo) {
-		if (buscarSaldoCriado(saldo.getNumeroDaContaSaldo()).equals(saldo.getNumeroDaContaSaldo())) {
-			return false;
-		}else {
-			 saldos.add(saldo);
-			return true;
-		}
-	}
-	
-	///////////////////////
-	public boolean pagarConta(int codigoBarra, Double valorFatura, Boolean pago) {
-		for (Usuario usuario : usuarios) {
-			if (usuario.getConta().getCodigoBarra() == codigoBarra
-					&& usuario.getConta().getValorFatura().equals(valorFatura)) {
-				if (pago.equals(false))
-					return true;
-			}
-		}
-		return false;
-	}
 
 	public boolean isLate(LocalDate date) {
 		LocalDate today = LocalDate.now();

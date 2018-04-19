@@ -4,16 +4,26 @@ public class Saldo {
 	
 	private String numeroDaContaSaldo;
 	private double valor;
+	private String banco;
 	
-	public Saldo(String numeroDaContaSaldo, double valor){
+	public Saldo(String numeroDaContaSaldo,String banco, double valor){
 		this.numeroDaContaSaldo = numeroDaContaSaldo;
 		this.valor = valor;
+		this.banco=banco;
 	}
 	
-	public Saldo (String numeroDaContaSaldo) {
-		this.numeroDaContaSaldo = numeroDaContaSaldo;
-		this.valor = 0;
+	public String getBanco() {
+		return banco;
 	}
+
+
+
+	public void setBanco(String banco) {
+		this.banco = banco;
+	}
+
+
+
 	public String getNumeroDaContaSaldo() {
 		return numeroDaContaSaldo;
 	}
