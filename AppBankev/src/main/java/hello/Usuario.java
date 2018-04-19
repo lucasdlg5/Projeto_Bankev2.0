@@ -9,22 +9,25 @@ public class Usuario {
 	private String numeroDaConta;
 	private Saldo saldo;
 	private Conta conta;
+	private String cpf;
 	
 	
-	public Usuario(String nomecompleto,String email,String user,String senha) {
+	public Usuario(String nomecompleto,String email,String user,String senha, String cpf) {
 		this.nomeCompleto=nomecompleto;
 		this.email=email;
 		this.user=user;
 		this.senha=senha;
+		this.cpf = cpf;
 	}
 
-	public Usuario(String user, String senha, String email,String numeroDaConta, Saldo saldo,Conta conta) {
+	public Usuario(String user, String senha, String email,String numeroDaConta, Saldo saldo,Conta conta, String cpf) {
 		this.user = user;
 		this.senha = senha;
 		this.email = email;
 		this.numeroDaConta = numeroDaConta;
 		this.saldo = saldo;
 		this.conta = conta;
+		this.cpf = cpf;
 	}
 	
 	public Usuario(String user, String senha) {

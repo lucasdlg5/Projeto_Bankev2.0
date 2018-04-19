@@ -44,9 +44,9 @@ public class Controller {
 	}
 	
 	public void cadastrarUsuario() {
-		get("/addUsuario/:nomecompleto/:email/:user/:senha",(req,res)->{
+		get("/addUsuario/:nomecompleto/:email/:user/:senha/:cpf",(req,res)->{
 			
-			modelo.cadastrarUsuario(new Usuario(req.params(":nomecompleto"),req.params(":email"),req.params(":user"),req.params(":senha")));
+			modelo.cadastrarUsuario(new Usuario(req.params(":nomecompleto"),req.params(":email"),req.params(":user"),req.params(":senha"),req.params(":cpf")));
 			return new Gson().toJson(modelo.getUsuarios());
 		});
 	}

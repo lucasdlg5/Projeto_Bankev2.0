@@ -46,19 +46,27 @@
 						<input class="input100" type="text" id="nomeCompleto" name="name" placeholder="Fulano de tal...">
 						
 						<span class="focus-input100"></span>
-					</div>
-
-					<div class="wrap-input100 validate-input" data-validate = "É preciso colocar um email valido, exemplo: ex@abc.xyz">
-						<span class="label-input100">Email</span>
-						<input class="input100" type="text" id="email" name="email" placeholder="Seu email...">
-						<span class="focus-input100"></span>
-					</div>
+					</div>	
+					
 
 					<div class="wrap-input100 validate-input" data-validate="É necessário um nomede usuário!">
 						<span class="label-input100">Username</span>
 						<input class="input100" type="text" id="user" name="username" placeholder="Username...">
 						<span class="focus-input100"></span>
 					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "É preciso colocar um email valido, exemplo: ex@abc.xyz">
+						<span class="label-input100">Email</span>
+						<input class="input100" type="text" id="email" name="email" placeholder="Seu email...">
+						<span class="focus-input100"></span>
+					</div>		
+					
+					<div class="wrap-input100 validate-input" data-validate = "É preciso colocar um CPF valido!, exemplo: 999.999.999-99">
+							<span class="label-input100">CPF</span>
+							<input class="input100" type="text" id="cpf" name="cpf" placeholder="Seu CPF... 999.999.999-99">
+							<span class="focus-input100"></span>
+					</div>	
+
 
 					<div class="wrap-input100 validate-input" data-validate = "É nessesário inserir uma senha!">
 						<span class="label-input100">Senha</span>
@@ -113,21 +121,19 @@
         		var user = $("#user").val();
         		var senha = $("#senha").val();
         		var sennhaConfirm = $('#sennhaConfirm').val();
+				var cpf = $('cpf').val();
 				
 				$("#dadosPessoa").empty();
 
-				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"";
+				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"/"+cpf+"";
 				
 				alert(url);
 				$.getJSON(url, function(data) {
-				//		var itens = [];
-				//		$.each(data, function(i){
-				//			itens.push("<tr> <td>"+ this.nomecompleto +"</td><td>"+ this.email +"</td><td>"+ this.user + "</td><td>"+ this.senha + "</td></tr>");						
-				//		});
-				//		alert(itens);
-				//		$("#dadosPessoa").append(itens);
-				alert("a");
+					alert(data);
+					alert("a");
 				location.href = "register-banco.html";
+
+				
 				});
 
 			
