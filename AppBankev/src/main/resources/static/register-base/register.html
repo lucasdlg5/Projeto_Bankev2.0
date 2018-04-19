@@ -28,6 +28,36 @@
 	<link rel="stylesheet" type="text/css" href="css/util.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
 <!--===============================================================================================-->
+		<script language="JavaScript">
+		function verificaUsuario(){
+			alert('ok');
+			
+				alert('entrou na funcao');
+				var nomecompleto = $("#nomeCompleto").val();
+				var email = $("#email").val();        		
+        		var user = $("#user").val();
+        		var senha = $("#senha").val();
+        		var sennhaConfirm = $('#sennhaConfirm').val();
+				var cpf = $('cpf').val();
+				
+				$("#dadosPessoa").empty();
+
+				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"/"+cpf+"";
+				
+				alert(url);
+				$.getJSON(url, function(data) {
+					alert(data);
+					alert("a");
+				location.href = "register-banco.html";
+
+				
+				});
+				
+			
+
+
+		};
+		</script>
 </head>
 <body style="background-color: #999999;">
 	
@@ -111,36 +141,6 @@
 			</div>
 		</div>
 	</div>
-		<script>
-		function verificaUsuario(){
-			alert('ok');
-			
-				alert('entrou na funcao');
-				var nomecompleto = $("#nomeCompleto").val();
-				var email = $("#email").val();        		
-        		var user = $("#user").val();
-        		var senha = $("#senha").val();
-        		var sennhaConfirm = $('#sennhaConfirm').val();
-				var cpf = $('cpf').val();
-				
-				$("#dadosPessoa").empty();
-
-				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"/"+cpf+"";
-				
-				alert(url);
-				$.getJSON(url, function(data) {
-					alert(data);
-					alert("a");
-				location.href = "register-banco.html";
-
-				
-				});
-
-			
-
-
-		};
-		</script>
 
 <!--===============================================================================================-->
 	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
