@@ -38,7 +38,29 @@
 
     <script>
 
-        
+        function enviaDado(nomeUsername){
+            var usuario = $("#txtPesq" ).val();
+                    
+                    $("#dadosUsuario").empty();
+                        
+                    var url = "/buscaListUsuarios/"+nomeUsername+"";
+                        
+    
+                    $.getJSON(url, function(data) {
+                            
+                            var itens = [];
+                            
+                            $.each(data, function(i){
+                            
+                                itens.push("<tr> <td>"+ this.user +"</td><td>"+ this.email +"</td><td>"+ this.cpf + "</td></tr>");
+                                
+                            });
+                                        
+                            $("#dadosUsuario").append(itens);
+                            
+                    });
+        }
+
         function getCookie(cname) {
             var name = cname + "=";
             var decodedCookie = decodeURIComponent(document.cookie);
@@ -56,15 +78,17 @@
         }
       
         function checkCookie() {
-            alert(document.cookie);
+            console.log("Verificando Cookies...");
+            console.log(document.cookie);
           var username=getCookie("usernameLogin");
-          alert(username);
+         // alert(username);
           if (username != "") {
-            alert("Esta armazenado! " + username);
+            console.log("Esta armazenado na variavel! " + username);
+            enviaDado(username);
           } else {
              //user = prompt("Please enter your name:","");
              //if (user != "" && user != null) {
-                 alert("É Necessário que faça o login!!");
+                 alert("O usuario nao esta armazenado nos cookies... Refaça o login!");
                  location.href = "../login-base/index.html";
                  //setCookie("statusLogin", "ok", 30);
              //}
@@ -80,6 +104,7 @@
               //    location.href = "../login-base/index.html";
               //}
           }
+          
           </script>
 </head>
 
@@ -134,26 +159,36 @@
                 <br>
 
                 <div class="list-group">
-                        <button type="button" class="list-group-item list-group-item-action active">
+                        <button class="list-group-item list-group-item-action active">
                                 Dados Cadastrais</button>
 
-                    <a
-                        href="#"
-                        class="list-group-item list-group-item-action"
+                                <table class="table table-bordered"> 
+                                    <!--<caption>Bebidas</caption>-->
+                                        <thead>
+                                            <tr>
+                                                <th>Username</th>
+                                                <th>E-mail</th>
+                                                <th>CPF</th>
+                                               
+                                            </tr> 
+                                        </thead> 
+                                        
+                                        <tbody id="dadosUsuario"> 
+                                            
+                                        </tbody> 
+                                </table>
+<!--
+                    <a id="campoNome" class="list-group-item list-group-item-action disabled"
                     >Nome: </a>
 
-                    <a
-                        href="#"
-                        class="list-group-item list-group-item-action"
+                    <a id="campoEmail" class="list-group-item list-group-item-action disabled"
                     >E-mail: </a>
 
-                    <a
-                        href="#"
-                        class="list-group-item list-group-item-action"
-                    >Telefone</a>
+                    <a id="campoCPF" class="list-group-item list-group-item-action disabled"
+                    >CPF</a>
 
-                    <a  href="#"  class="list-group-item list-group-item-action disabled"
-                    >Etc...</a>
+                    <a  id="" class="list-group-item list-group-item-action disabled"
+                    >Etc...</a> -->
                 </div>
                 <!-- <h1>Bem-vindo ao Banco Online Bankev!</h1>
                 <p>Aqui você poderá gerenciar todos os tipos de funções que deseja</p>
