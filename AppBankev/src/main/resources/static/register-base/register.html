@@ -34,15 +34,16 @@
 			
 				alert('entrou na funcao');
 				var nomecompleto = $("#nomeCompleto").val();
+				var cpf = $("#cpf").val();
 				var email = $("#email").val();        		
         		var user = $("#user").val();
         		var senha = $("#senha").val();
+        		var numeroDaConta = $("#numeroDaConta").val();
         		var sennhaConfirm = $('#sennhaConfirm').val();
-				var cpf = $('cpf').val();
 				
 				$("#dadosPessoa").empty();
 
-				var url = "/addUsuario/"+nomecompleto+"/"+email+"/"+user+"/"+senha+"/"+cpf+"";
+				var url = "/addUsuario/"+nomecompleto+"/"+cpf+"/"+email+"/"+user+"/"+senha+"/"+numeroDaConta+"";
 				
 				alert(url);
 				$.getJSON(url, function(data) {
@@ -50,7 +51,25 @@
 					alert("a");
 				
 				});
-				location.href = "register-banco.html";
+
+				var url2 = "/confBanco/"+numeroDaConta+"";
+
+
+				alert('entrou na confirmacao');
+				alert(url2);
+				$.getJSON(url2,function(data2){
+					alert (data2);
+					if(data2==true){
+						location.href = "../login-base/index.html";
+
+					}
+					else
+						location.href = "register-banco.html";
+
+
+
+				});
+				
 				//$(location).attr('href','register-banco.html');
 								
 			
@@ -77,7 +96,6 @@
 						
 						<span class="focus-input100"></span>
 					</div>	
-					
 
 					<div class="wrap-input100 validate-input" data-validate="É necessário um nomede usuário!">
 						<span class="label-input100">Username</span>
@@ -97,6 +115,11 @@
 							<span class="focus-input100"></span>
 					</div>	
 
+					<div class="wrap-input100 validate-input" data-validate="É necessário o numero de conta!">
+						<span class="label-input100">Numero da Conta</span>
+						<input class="input100" type="text" id="numeroDaConta" name="numeroDaConta" placeholder="Conta...">
+						<span class="focus-input100"></span>
+					</div>
 
 					<div class="wrap-input100 validate-input" data-validate = "É nessesário inserir uma senha!">
 						<span class="label-input100">Senha</span>

@@ -35,6 +35,101 @@
         href="../css/simple-sidebar.css"
         rel="stylesheet"
     ></link>
+
+    <script langague="JavaScript">
+
+function enviaDado(nomeUsername){
+            var usuario = $("#txtPesq" ).val();
+                    
+                    $("#dadosUsuario").empty();
+                        
+                    var url = "/buscaListUsuarios/"+nomeUsername+"";
+                        
+    
+                    $.getJSON(url, function(data) {
+                            
+                            var itens = [];
+                            
+                            $.each(data, function(i){
+
+
+                                        //Usuario.CPF -> Conta.Codigo de barra, Conta.valorFatura, Conta.pago, Conta.data 
+
+                            //Verificar quantos bancos o usuario tem em estrutura de repeticao FOR
+                            var i;
+                            var j;
+                            var banco = ["Itau", "Caixa", "Santander"];
+                            //for (i = 0; i < 3; i++){
+                                console.log("entrou "+banco[i]);
+                                //Aqui devera consumir um array de bancos
+                                $("ol").append("<br><h3> "+ banco[i] +"</h3>");
+                                //$("ol").append("<h3> opa </h3>");
+                                    //verificar quantas interações bancarias (contas e faturas) o usuario tem no banco percorrido
+                                    for (j = 0; j < 4; j++){
+                                    // $("ol").append("<h3>ok</h3>");
+                                    $("ol").append(' <div class="card text-white bg-primary mb-3" style="max-width: 18rem;"> <div class="card-header "></div> <div class="card-body"> <h5 class="card-title">Credito Especial</h5> <p class="card-text">Valor: R$ 150,00</p> <p class="card-text">Data vencimento: 05/05/2018</p> <p class="card-text">Data Proxima Fatura: 05/06/2018</p> </div> </div> ');
+                                    //Adicionar cada um dentro do card.
+                                    }
+                            //}
+                            //Sair da condicao de repeticao
+                            
+                               // itens.push("<tr> <td>"+ this.user +"</td><td>"+ this.email +"</td><td>"+ this.cpf + "</td></tr>");
+                                
+                            });
+                                        
+                           // $("#dadosUsuario").append(itens);
+                            
+                    });
+        }
+
+
+        
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+      
+        function checkCookie() {
+            console.log("Verificando Cookies...");
+            console.log(document.cookie);
+          var username=getCookie("usernameLogin");
+          
+          if (username != "") {
+            console.log("Esta armazenado na variavel! " + username);
+            enviaDado(username);
+          } else {
+             //user = prompt("Please enter your name:","");
+             //if (user != "" && user != null) {
+                 alert("O usuario nao esta armazenado nos cookies... Refaça o login!");
+                 location.href = "../login-base/index.html";
+                 //setCookie("statusLogin", "ok", 30);
+             //}
+          }
+      }
+
+    window.onload = function cardContas(){
+
+        checkCookie ();
+
+
+
+
+
+
+    }
+    </script>
 </head>
 
 <body>
@@ -48,7 +143,7 @@
                 </li>
 
                 <li>
-                    <a href="administracao.html">Administração</a>
+                    <a href="administracao.html">Administra��o</a>
                 </li>
 
                 <li>
@@ -60,7 +155,7 @@
                 </li>
 
                 <li>
-                    <a href="faturas.html">Faturas de cartão</a>
+                    <a href="faturas.html">Faturas de cart�o</a>
                 </li>
 
                 <li>
@@ -87,11 +182,19 @@
                 <br>
                 <br>
                 <br>
+                <br>
                 
-                <!-- Aqui será necessario realizar um FOR dentro de For, pois um deles irá percorrer a lista de bancos, enquanto o segundo FOR dentro de cada banco listando os status das contas de cada banco-->
+                <!-- Aqui ser� necessario realizar um FOR dentro de For, pois um deles ir� percorrer a lista de bancos, enquanto o segundo FOR dentro de cada banco listando os status das contas de cada banco-->
                 <!-- Adicionar em formato de lista sobre os bancos contendo os cards apartir desta linha-->
-
-                <!-- Aqui começa um -->
+                <!-- teste de repeticao INICIO-->
+                <div class="row">
+                    <ol></ol>
+                      
+                    </ol>
+                 </div>
+                <!-- teste de repeticao FIM -->
+                <!-- Aqui come�a um -->
+                <!--
                 <h3>
                     Santander
                 </h3>
@@ -185,9 +288,10 @@
                                 </div>
                             </div>
                     </div>
-                </div>
+                </div> -->
                 <!-- Aqui acaba um -->
                 <br>
+<!--
                 <h3>
                     Bradesco
                 </h3>
@@ -281,7 +385,7 @@
                                 </div>
                             </div>
                     </div>
-                </div>
+                </div> -->
 
                   <!-- Finalizar o formato de lista antes desta linha -->
 
@@ -320,8 +424,8 @@
                     class="btn btn-success"
                 >Santander</a>-->
                 <!-- <h1>Bem-vindo ao Banco Online Bankev!</h1>
-                <p>Aqui você poderá gerenciar todos os tipos de funções que deseja</p>
-                <p>Utilize o botão abaixo para abrir o painel de opções à esquerda.</p> -->
+                <p>Aqui voc� poder� gerenciar todos os tipos de fun��es que deseja</p>
+                <p>Utilize o bot�o abaixo para abrir o painel de op��es � esquerda.</p> -->
            <!-- </div>
         </div> -->
 

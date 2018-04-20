@@ -47,7 +47,7 @@ public class MainServer {
     }
     
     public static void inicializarUsuarios(){
-//    	List<Usuario> database = new ArrayList<Usuario>();
+//    	List<Usuario> database = new ArrayLis	t<Usuario>();
 
     	modelo.cadastrarUsuario(new Usuario("Lucas Domingos", "123456789", "1@1.com","lucasdlg","123", "987654321"));
     	modelo.cadastrarUsuario(new Usuario("Karinao Silva", "123456788", "2@2.com","karinaoS","124", "987654323"));

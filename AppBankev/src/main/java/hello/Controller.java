@@ -40,8 +40,8 @@ public class Controller {
 	}
 	
 	public void confBanco() {
-		get("/confBanco/:cpf",(req,res)->{
-			boolean resp= modelo.confBankEx(req.params(":cpf"));
+		get("/confBanco/:numConta",(req,res)->{
+			boolean resp= modelo.confBankEx(req.params(":numConta"));
 			return new Gson().toJson(resp);
 		});
 	}
