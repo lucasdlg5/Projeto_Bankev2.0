@@ -35,6 +35,7 @@ function setCookie(cname,cvalue,exdays) {
     d.setTime(d.getTime() + (exdays*24*60*60*1000));
     var expires = "expires=" + d.toGMTString();
     document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+	console.log (document.cookie);
 }
 
   function getCookie(cname) {
@@ -54,15 +55,23 @@ function setCookie(cname,cvalue,exdays) {
   }
 
 function checkCookie() {
-    var user=getCookie("statusLogin");
+    //var user=getCookie("statusLogin");
+	var username=getCookie("usernameLogin");
+	var usuLogin = document.getElementById("usuario_input").value;
 	//alert(user);
-    if (user != "") {
+    if (username != "") {
        // alert("Esta armazenado! " + user);
     } else {
        //user = prompt("Please enter your name:","");
        //if (user != "" && user != null) {
 		  // alert("Nao esta armazenado ainda...");
+		  //for (i=0;i<2;i++){
+			
+           setCookie("usernameLogin", usuLogin, 30);
            setCookie("statusLogin", "ok", 30);
+		   
+		   
+		  //}
        //}
     }
 }
