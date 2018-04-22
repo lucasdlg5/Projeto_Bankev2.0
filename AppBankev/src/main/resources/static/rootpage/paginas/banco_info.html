@@ -58,11 +58,12 @@ function enviaDado(nomeUsername){
                             //Verificar quantos bancos o usuario tem em estrutura de repeticao FOR
                             var i;
                             var j;
-                            var banco = ["Itau", "Caixa", "Santander"];
+                            var banco = ["a", "b", "c"];
                             //for (i = 0; i < 3; i++){
-                                console.log("entrou "+banco[i]);
+                                //Verificar o acesso deste JSON da linha abaixo = http://127.0.0.1:5543/buscaListUsuarios/lucasdlg
+                                console.log("entrou "+this.data[0]);
                                 //Aqui devera consumir um array de bancos
-                                $("ol").append("<br><h3> "+ banco[i] +"</h3>");
+                                $("ol").append("<br><h3> "+ this.i +"</h3>");
                                 //$("ol").append("<h3> opa </h3>");
                                     //verificar quantas interações bancarias (contas e faturas) o usuario tem no banco percorrido
                                     for (j = 0; j < 4; j++){
