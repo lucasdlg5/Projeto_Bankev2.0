@@ -49,41 +49,81 @@ Espere alguns munitos ou reinicie o projeto, ele irá identificar os imports!!
 */
 
 public class Modelo {
-
-	private List<Usuario> usuarios = new LinkedList<Usuario>();
-
-	private List<Banco> bancos = new LinkedList<Banco>();
-
-	private List<Admin> admins = new LinkedList<Admin>();
 	
-	private List<Conta> contas= new LinkedList<Conta>();
+	/*
+	 * Aplicando o Singleton - Para privar de que se inicie varias instancias de Banco varias vezes dentro do código
+	 * Atravez de um construtor privado (so pode ser usado dentro da classe Modelo - Logo para usar precisamos instanciar o modelo e usar 
+	 * o modelo = modelo.getInstance) iremos verificar na criação se ele está nulo ou nao.
+	 * Caso esteja, ainda nao foi criado uma instanciação, caso sim, ele irá ignorar a criação secundária.
+	 * */
+	private static Modelo modeloUniqueInstance;
 	
-	private List<Saldo> saldos = new LinkedList<Saldo>();
+
+	public static Modelo getInstance() {
+		if (modeloUniqueInstance == null) {
+			modeloUniqueInstance = new Modelo();
+		}
+		return modeloUniqueInstance;
+	}
+	
+	/*
+	 * Aplicando o Singleton - Para privar de que se inicie varias instancias de Banco varias vezes dentro do código
+	 * 
+	 */
+
+	//private List<Usuario> usuarios = new LinkedList<Usuario>();
+	ObjectContainer usuarios = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/usuarios.db4o");
+
+	//private List<Banco> bancos = new LinkedList<Banco>();
+	ObjectContainer bancos = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/bancos.db4o");
+	
+	//private List<Admin> admins = new LinkedList<Admin>();
+	ObjectContainer admins = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/admins.db4o");
+	
+	//private List<Conta> contas= new LinkedList<Conta>();
+	ObjectContainer contas = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/contas.db4o");
+	
+	//private List<Saldo> saldos = new LinkedList<Saldo>();
+	ObjectContainer saldos = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/saldos.db4o");
 
 	public void cadastrarUsuario(Usuario usuario) {
 		//usuarios.add(usuario);
-		ObjectContainer usuarios = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/usuarios.db4o");
+		usuarios.store(usuario);
+		usuarios.commit();
 	}
 	
 	public void cadastrarConta(Conta conta) {
-		contas.add(conta);
+		//contas.add(conta);
+		contas.store(conta);
+		contas.commit();
 	}
 	
 	public void cadastrarSaldo(Saldo saldo) {
-		saldos.add(saldo);
+//		saldos.add(saldo);
+		saldos.store(saldo);
+		saldos.commit();
 	}
 
 	public void cadastrarBanco(Banco banco) {
-		bancos.add(banco);
+//		bancos.add(banco);
+		bancos.store(banco);
+		bancos.commit();
 	}
 
 	public void cadastrarAdmin(Admin admin) {
 		if (adminRepetidas(admin.getNomeAdmin(), admin.getSenhaAdmin())) {
-			admins.add(admin);
+//			admins.add(admin);
+			admins.store(admin);
+			admins.commit();
 		}
 	}
 
 	public boolean adminRepetidas(String nomeAdmin, String senhaAdmin) {
+		
+		Query query = admins.query();
+		query.constrain(Admin.class);
+	    ObjectSet<Admin> admins = query.execute();
+		
 		for (Admin admin : admins) {
 			if (admin.getNomeAdmin().equals(nomeAdmin) || admin.getSenhaAdmin().equals(senhaAdmin))
 				return false;
@@ -92,6 +132,11 @@ public class Modelo {
 	}
 
 	public boolean contasRepetidas(String email, String numeroDaConta) {
+		
+		Query query = usuarios.query();
+		query.constrain(Usuario.class);
+	    ObjectSet<Usuario> usuarios = query.execute();
+		
 		for (Usuario usuario : usuarios) {
 			if (usuario.getEmail().equals(email) || usuario.getNumeroDaConta().equals(numeroDaConta))
 				return false;
@@ -103,18 +148,28 @@ public class Modelo {
 	
 	public List<Saldo> buscarSaldo(String numeroConta){
 		List<Saldo> saldoEncontrada = new LinkedList<Saldo>();
-		for(Saldo saldo:this.saldos) {
+		
+		Query query = saldos.query();
+		query.constrain(Saldo.class);
+	    ObjectSet<Saldo> saldos  = query.execute();
+	    
+		for(Saldo saldo:saldos) {
 			if(saldo.getNumeroDaContaSaldo().equals(numeroConta));
 			saldoEncontrada.add(saldo);
+			//saldoEncontrada.store(saldo);
 		}
 		return saldoEncontrada;
 	}
 	
 	public List<Conta> buscarContaUsuario(String cpf,String numeroDaConta){
 		List<Conta> contaEncontrada = new LinkedList<Conta>();
-		for(Conta conta:this.contas) {
+		Query query = contas.query();
+		query.constrain(Conta.class);
+	    ObjectSet<Conta> contas = query.execute();
+		for(Conta conta:contas) {
 			if(conta.getCpf().equals(cpf)) {
 				contaEncontrada.add(conta);
+				//contaEncontrada.store(conta);
 			}
 				
 		}
@@ -124,9 +179,16 @@ public class Modelo {
 	
 	public List<Usuario> buscarUsuarioPorUser(String user) {
 		List<Usuario> userEncontrados = new LinkedList<Usuario>();
-		for (Usuario usuario : this.usuarios) {
+		
+		Query query = usuarios.query();
+		query.constrain(Usuario.class);
+	    ObjectSet<Usuario> usuarios = query.execute();
+		
+		for (Usuario usuario : usuarios) {
 			if (usuario.getUser().equals(user))
 				userEncontrados.add(usuario);
+				//userEncontrados.store(usuario);
+				
 		}
 		return userEncontrados;
 
@@ -134,9 +196,15 @@ public class Modelo {
 
 	public List<Banco> buscarBancoPorNome(String nomeBanco) {
 		List<Banco> nomeBancoEncontrado = new LinkedList<Banco>();
-		for (Banco banco : this.bancos) {
+
+		Query query = usuarios.query();
+		query.constrain(Banco.class);
+	    ObjectSet<Banco> bancos = query.execute();
+	    
+		for (Banco banco : bancos) {
 			if (banco.getNomeBanco().equals(nomeBanco))
 				nomeBancoEncontrado.add(banco);
+				//nomeBancoEncontrado.store(banco);
 		}
 		return nomeBancoEncontrado;
 
@@ -144,6 +212,11 @@ public class Modelo {
 
 	public boolean confBankEx(String cpf) {
 		int conf=0;
+		
+		Query query = bancos.query();
+		query.constrain(Banco.class);
+	    ObjectSet<Banco> bancos = query.execute();
+	    
 		for (Banco banco:bancos) {
 			if (banco.getCpf().equals(cpf)) {
 				conf=conf+1;
@@ -160,6 +233,11 @@ public class Modelo {
 	
 	
 	public boolean logarUsuario(String user, String senha) {
+		
+		Query query = usuarios.query();
+		query.constrain(Usuario.class);
+	    ObjectSet<Usuario> usuarios = query.execute();
+	    
 		for (Usuario usuario : usuarios) {
 			if (usuario.getUser().equals(user) && usuario.getSenha().equals(senha))
 				return true;
@@ -177,6 +255,9 @@ public class Modelo {
 
 	public boolean verificaContAtr(String user, String numeroDaConta, LocalDate data) {
 		LocalDate today = LocalDate.now();
+		Query query = usuarios.query();
+		query.constrain(Usuario.class);
+	    ObjectSet<Usuario> usuarios = query.execute();
 		for (Usuario usuario : usuarios) {
 			if (usuario.getNumeroDaConta().equals(numeroDaConta) && usuario.getUser().equals(user)) {
 				if (data.isBefore(today))
@@ -187,15 +268,24 @@ public class Modelo {
 	}
 
 	public List<Usuario> getUsuarios() {
-		return this.usuarios;
+		Query query = usuarios.query();
+		query.constrain(Usuario.class);
+	    ObjectSet<Usuario> usuarios = query.execute();
+		return usuarios;
 	}
 
 	public List<Banco> getBancos() {
-		return this.bancos;
+		Query query = bancos.query();
+		query.constrain(Banco.class);
+	    ObjectSet<Banco> bancos = query.execute();
+		return bancos;
 	}
 
 	public List<Admin> getAdmin() {
-		return this.admins;
+		Query query = admins.query();
+		query.constrain(Admin.class);
+	    ObjectSet<Admin> admins = query.execute();
+		return admins;
 	}
 
 }

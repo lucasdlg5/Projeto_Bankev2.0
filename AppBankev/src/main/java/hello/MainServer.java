@@ -6,6 +6,14 @@ import static spark.Spark.staticFileLocation;
 import java.time.LocalDate;
 
 
+/* Aplicando o Singleton de Modelo*/ 
+//private static Modelo modelo;
+
+//modelo = model.getInstance();
+
+
+/* Aplicando o Singleton de Modelo*/ 
+
 public class MainServer {
 	
 	final static Modelo modelo = new Modelo();
@@ -49,6 +57,7 @@ public class MainServer {
     public static void inicializarUsuarios(){
 //    	List<Usuario> database = new ArrayLis	t<Usuario>();
 
+    	/*
     	modelo.cadastrarUsuario(new Usuario("Lucas Domingos", "123456789", "1@1.com","lucasdlg","123", "987654321"));
     	modelo.cadastrarUsuario(new Usuario("Karinao Silva", "123456788", "2@2.com","karinaoS","124", "987654323"));
     	modelo.cadastrarSaldo(new Saldo("987654321","Bradesco",5000.00));
@@ -56,6 +65,8 @@ public class MainServer {
     	modelo.cadastrarConta(new Conta("123456789","987654321",50.30,789456,false,null));
     	modelo.cadastrarConta(new Conta("123456789","987654321",60.30,889456,true,null));
     	modelo.cadastrarConta(new Conta("123456789","987654321",150.30,989456,false,null));
+    	*/
+    	
     	
     	
 //		database.add(new Usuario("lucasdlg", "123", "1@1.com", null, null, null));

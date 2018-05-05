@@ -1,5 +1,7 @@
 package hello;
 
+import com.db4o.query.Query;
+
 public class Admin {
 	
 	private String nomeAdmin;
@@ -24,5 +26,7 @@ public class Admin {
 	public void setSenhaAdmin(String senhaAdmin){
 		this.senhaAdmin = senhaAdmin;
 	}
+
+
 
 }
