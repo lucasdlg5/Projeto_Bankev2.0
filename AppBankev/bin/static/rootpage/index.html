@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"></meta>
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    ></meta>
+
+    <meta
+        name="description"
+        content=""
+    ></meta>
+
+    <meta
+        name="author"
+        content=""
+    ></meta>
+
+    <title>
+        Simple Sidebar - Start Bootstrap Template
+    </title>
+
+    <!-- Bootstrap core CSS -->
+
+    <link
+        href="vendor/bootstrap/css/bootstrap.min.css"
+        rel="stylesheet"
+    ></link>
+
+    <!-- Custom styles for this template -->
+
+    <link
+        href="css/simple-sidebar.css"
+        rel="stylesheet"
+    ></link>
+
+    <script>
+
+        
+  function getCookie(cname) {
+      var name = cname + "=";
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var ca = decodedCookie.split(';');
+      for(var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+              c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+              return c.substring(name.length, c.length);
+          }
+      }
+      return "";
+  }
+
+  function checkCookie() {
+    var user=getCookie("statusLogin");
+	//alert(user);
+    if (user != "") {
+        //alert("Esta armazenado! " + user);
+    } else {
+       //user = prompt("Please enter your name:","");
+       //if (user != "" && user != null) {
+		   alert("É Necessário que faça o login!!");
+           location.href = "../login-base/index.html";
+           //setCookie("statusLogin", "ok", 30);
+       //}
+    }
+}
+    window.onload = function verCook() {
+        //var cook = document.cookie;
+        checkCookie ();
+        //if (document.cookie != "ok"){
+        //    console.log("Nao");
+        //    alert(document.cookie);
+        //    alert("É necessario fazer login!!");
+        //    location.href = "../login-base/index.html";
+        //}
+    }
+    </script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- Sidebar -->
+
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="../rootpage/index.html">Bankev</a>
+                </li>
+
+                <li>
+                    <a href="../rootpage/paginas/administracao.html">Administração</a>
+                </li>
+
+                <li>
+                    <a href="../rootpage/paginas/banco_info.html">Bancos em meu CPF</a>
+                </li>
+
+                <li>
+                    <a href="../rootpage/paginas/contas.html">Contas a pagar</a>
+                </li>
+
+                <li>
+                    <a href="../rootpage/paginas/faturas.html">Faturas de cartão</a>
+                </li>
+
+                <li>
+                    <a href="../rootpage/paginas/saldo.html">Saldo de bancos</a>
+                </li>
+
+                <li>
+                    <a href="../rootpage/paginas/usuario.html">Perfil</a>
+                </li>
+            </ul>
+        </div>
+
+        <!-- /#sidebar-wrapper -->
+        <!-- Page Content -->
+
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+                    <div class="card mb-3">
+                            
+                            <div class="card-body">
+                                    <h1>
+                                            Bem-vindo ao Banco Online Bankev!
+                                        </h1>
+                        
+                              <p class="card-text"> Aqui você poderá gerenciar todos os tipos de funções que deseja</p>
+                              <p class="card-text"> Utilize o botão abaixo para abrir o painel de opções à esquerda.</p>
+                              <a
+                              href="#menu-toggle"
+                              class="btn btn-primary"
+                              id="menu-toggle"
+                          >Abrir Menu</a>
+                          <br><br>
+
+                              <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                              
+                            
+                            </div>
+                            <img class="card-img-top" src="paginas/imagens/15.jpg" alt="Card image cap">
+                        </div>
+
+               
+            </div>
+        </div>
+
+        <!-- /#page-content-wrapper -->
+    </div>
+
+    <!-- /#wrapper -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Menu Toggle Script -->
+
+    <script>
+        $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
+</body>
+</html>

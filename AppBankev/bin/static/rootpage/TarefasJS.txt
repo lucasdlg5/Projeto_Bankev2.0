@@ -1,0 +1,23 @@
+Tela de Login
+-- Fazer a autenticação do usuario verificando se está cadastrado no sistema
+- Função logarUsuario através das respostas True ou False
+
+Cadastro de usuarios
+- Um cadastro comum onde será verificado se há Contas Repitidas através do campos Senha e Usuário
+- Função contasRepetidas comparando com o banco de usuários cadastrados através das respostas True ou False
+
+Funciao do administrador - Administração
+- Cadastrar usuarios
+- Cadastrar banco novo
+- Adicionar adiministrador novo
+
+Tela Contas
+- Comnotificacoes com contas atrasadas com distiçã de cores para atrasos e bons pagadores
+- consultar contas
+- Caminho para pagar contas (alterando o booleano de conta atrasada se paga)
+
+Tela Saldo
+- Consultar o saldo de sua conta no banco
+
+Tela Fatura
+-

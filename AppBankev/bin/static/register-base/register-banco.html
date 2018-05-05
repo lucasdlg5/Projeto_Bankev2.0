@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Registrar - Bankev Inc.</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--===============================================================================================-->	
+	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/Linearicons-Free-v1.0.0/icon-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="fonts/iconic/css/material-design-iconic-font.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/animsition/css/animsition.min.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+<!--===============================================================================================-->	
+	<link rel="stylesheet" type="text/css" href="vendor/daterangepicker/daterangepicker.css">
+<!--===============================================================================================-->
+	<link rel="stylesheet" type="text/css" href="css/util.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+<!--===============================================================================================-->
+</head>
+<body style="background-color: #999999;">
+	
+	<div class="limiter">
+		<div class="container-login100">
+			<div class="login100-more" style="background-image: url('images/bg-02.jpg');"></div>
+
+			<div class="wrap-login100 p-l-50 p-r-50 p-t-72 p-b-50">
+				<form class="login100-form validate-form">
+					<span class="login100-form-title p-b-59">
+						Não esqueça de cadastrar seu banco!
+					</span>
+
+					<div class="wrap-input100 validate-input" data-validate="É necessário inserir seu nome completo!">
+						<span class="label-input100">E-mail</span>
+						<input class="input100" type="text" id="email" name="email" placeholder="fulano_de_tal@hotmail.com">
+						
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="wrap-input100 validate-input" data-validate = "É preciso colocar um email valido, exemplo: ex@abc.xyz">
+						<!--<span class="label-input100">Selecione um Banco (primeiro nome)</span>-->
+						<input class="input100" type="text" id="nomeBanco" name="nomeBanco" placeholder="Santander...">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="dropdown">
+						<!--	<button type="button" class="btn btn-primary dropdown-toggle " data-toggle="dropdown">
+							  Selecione um Banco
+							</button> -->
+							
+							<select class="form-control col-md-12">
+								<option>Escolha um Banco</option>
+								<option>Santander</option>
+								<option>Itau</option>
+								<option>Brandesco</option>
+								<option>Inter :)</option>
+								<option>Nubank</option>
+								<option>Caixa Economica Federal</option>
+								<option>Banco do Brasil</option>
+							</select>
+						  </div>
+						  <br>
+						  <br>
+						  <br>
+
+					<div class="wrap-input100 validate-input" data-validate="É necessário um nomede usuário!">
+						<span class="label-input100">Insira o número da conta</span>
+						<input class="input100" type="text" id="nConta" name="nConta" placeholder="009999...">
+						<span class="focus-input100"></span>
+					</div>
+
+					<div class="flex-m w-full p-b-33">
+						<div class="contact100-form-checkbox">
+							<input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+							<label class="label-checkbox100" for="ckb1">
+								<span class="txt1">
+									Eu aceito os
+									<a href="#" class="txt2 hov1">
+										Termos de Uso
+									</a>
+								</span>
+							</label>
+						</div>
+
+						
+					</div>
+
+					<div class="container-login100-form-btn">
+						<div class="wrap-login100-form-btn">
+							<div class="login100-form-bgbtn"></div>
+							<button onclick="verificaUsuario()" id="cadastro" class="btn btn-primary col-offset-0">Cadastrar</button>
+						</div>
+
+						<a href="../login-base/index.html" class="dis-block txt3 hov1 p-r-30 p-t-10 p-b-10 p-l-30">
+							Login
+							<i class="fa fa-long-arrow-right m-l-5"></i>
+						</a>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+		<script>
+		function verificaUsuario(){
+			alert('ok');
+			
+				alert('entrou na funcao');
+				var email = $("#email").val();
+				var nomeBanco = $("#nomeBanco").val();        		
+        		var nConta = $("#nConta").val();
+				
+				
+				$("#dadosPessoa").empty();
+
+				//ARRUMAR A FUNÇÃO PARA CADASTRAR UMA CONTA PARA O CPF CADASTRADO
+				var url = "/addSaldo/"+nConta+"";
+				
+				alert(url);
+				$.getJSON(url, function(data) {
+				
+				console.log(data);
+				//		var itens = [];
+				//		$.each(data, function(i){
+				//			itens.push("<tr> <td>"+ this.nomecompleto +"</td><td>"+ this.email +"</td><td>"+ this.user + "</td><td>"+ this.senha + "</td></tr>");						
+				//		});
+				//		alert(itens);
+				//		$("#dadosPessoa").append(itens);
+				alert("enviouJson");
+				location.href = "../login-base/index.html";
+				});
+
+			
+
+
+		};
+		</script>
+
+<!--===============================================================================================-->
+	<script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/animsition/js/animsition.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/bootstrap/js/popper.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/select2/select2.min.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/daterangepicker/moment.min.js"></script>
+	<script src="vendor/daterangepicker/daterangepicker.js"></script>
+<!--===============================================================================================-->
+	<script src="vendor/countdowntime/countdowntime.js"></script>
+<!--===============================================================================================-->
+	<script src="js/main.js"></script>
+
+</body>
+</html>

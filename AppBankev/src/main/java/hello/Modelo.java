@@ -1,23 +1,23 @@
-/*Validação do login para login diferente para cada tipo de usuário
+/*Validaï¿½ï¿½o do login para login diferente para cada tipo de usuï¿½rio
 Admin
 - inserir usuarios
 - habilitar logins
 - ver todos os usuarios ativos no sistema
-- Editar informações gerais
+- Editar informaï¿½ï¿½es gerais
 
-Usuário
-- O usuário pode visualizar a lista de bancos existentes
-- Logar o usuário
-- O usuário pode buscar o seu banco por nome
-- O usuário pode visualizar a lista de bancos existentes
-- Buscar o saldo do usuário
+Usuï¿½rio
+- O usuï¿½rio pode visualizar a lista de bancos existentes
+- Logar o usuï¿½rio
+- O usuï¿½rio pode buscar o seu banco por nome
+- O usuï¿½rio pode visualizar a lista de bancos existentes
+- Buscar o saldo do usuï¿½rio
 - Pagar a conta
-- Notificar o usuário se há conta em atraso
+- Notificar o usuï¿½rio se hï¿½ conta em atraso
 - O Administrador pode adicionar novos bancos
 - O Administrador pode editar 
 
 
-Requisitos não funcionais
+Requisitos nï¿½o funcionais
 
 */
 
@@ -29,6 +29,24 @@ import java.util.List;
 import java.util.Calendar;
 import java.util.Date;
 import java.time.LocalDate;
+
+import com.db4o.Db4oEmbedded;
+import com.db4o.ObjectContainer;
+import com.db4o.ObjectSet;
+import com.db4o.query.Query;
+
+/*
+Para os imports aparecer é necessario:
+
+- Criar uma pasta lib na raiz do projeto, adicionar o arquivo db4o-8.0.249.16098-all-java5.jar
+- Ir no arquivo build.graddle e adicionar uma linha em 'dependencies {'
+	- compile files("lib/db4o-8.0.249.16098-all-java5.jar")
+- Depois devemos adicionar estes imports na classe Modelo.java
+- Após isso, dentro do Eclipse, clicar com botao direito em sima do arquivo 'build.gradle' -> Gradle -> Refresh Gradle Project
+
+Espere alguns munitos ou reinicie o projeto, ele irá identificar os imports!!
+
+*/
 
 public class Modelo {
 
@@ -43,7 +61,8 @@ public class Modelo {
 	private List<Saldo> saldos = new LinkedList<Saldo>();
 
 	public void cadastrarUsuario(Usuario usuario) {
-		usuarios.add(usuario);
+		//usuarios.add(usuario);
+		ObjectContainer usuarios = Db4oEmbedded.openFile(Db4oEmbedded.newConfiguration(), "bd/usuarios.db4o");
 	}
 	
 	public void cadastrarConta(Conta conta) {
