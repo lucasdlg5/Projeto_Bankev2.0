@@ -79,21 +79,31 @@ function checkCookie() {
 function verificaUsuario() {	
 	var usuario = document.getElementById("usuario_input").value;
 	var senha = document.getElementById("senha_input").value;
-	var url = "/usuario/"+usuario+"/"+senha+"";
-	$.getJSON(url, function(data){
-		if (data == true){
-			
-			checkCookie();
 
-			//document.cookie = "ok";			
-			//alert(document.cookie);
+	//Descomentar e comentar o bloco abaixo para voltar o antigo.
+	//var url = "/usuario/"+usuario+"/"+senha+"";
+	//$.getJSON(url, function(data){
+	//	if (data == true){
+	//		checkCookie();
+	//		//document.cookie = "ok";			
+	//		//alert(document.cookie);
+	//		location.href = "../rootpage/index.html";
+	//	}else{
+	//		alert("Usuario ou senha invalidos!!");
+	//	}
+	//});
 
-
-			location.href = "../rootpage/index.html";
-		}else{
-			alert("Usuario ou senha invalidos!!");
-		}
-	});
+	//Implementando passar atributos por protocolo HTTP
+	$.post("/usuario/login", JSON.stringify({'userName': usuario, 'password': senha}), function(data){
+	if(data[0].status == 0){
+					checkCookie();
+					window.location.href = '../rootpage/index.html';
+				} else {
+					sessionStorage.setItem("userName",data[0].userName);
+					alert("Usuario ou senha invalidos!!");
+					//window.location.href = '/searchstudent.html';
+				}
+			}, "json");
 }
 
 </script>
