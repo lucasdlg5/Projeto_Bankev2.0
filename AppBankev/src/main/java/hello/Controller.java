@@ -2,12 +2,22 @@
 
 package hello;
 import static spark.Spark.get;
+import static spark.Spark.post;
 
+
+import java.io.UnsupportedEncodingException;
 import java.util.List;
 
-//import java.util.ArrayList;
-//import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import com.google.gson.Gson;
+
+import spark.Request;
+import spark.Response;
+import spark.Route;
 public class Controller {
 
 	private Modelo modelo;
@@ -17,11 +27,37 @@ public class Controller {
 	}
 	
 	public void loginUsuario() {
-		get("/usuario/:username/:password", (req, res) ->{
-			Usuario usuarioLogando = new Usuario(req.params(":username"), req.params(":password"));
-			boolean usuario_encontrado = modelo.logarUsuario(usuarioLogando.getUser(), usuarioLogando.getSenha());
-			return new Gson().toJson(usuario_encontrado);
+//		get("/usuario/:username/:password", (req, res) ->{
+//			Usuario usuarioLogando = new Usuario(req.params(":username"), req.params(":password"));
+//			boolean usuario_encontrado = modelo.logarUsuario(usuarioLogando.getUser(), usuarioLogando.getSenha());
+//			return new Gson().toJson(usuario_encontrado);
+//		});
+		
+		post ("/usuario/login", new Route() {
+			public Object handle(final Request request, final Response response) throws JSONException{
+	            response.header("Access-Control-Allow-Origin", "*");
+	            JSONObject json = new JSONObject(request.body()); // Aqui ele recebera todo o corpo de JSON enviado pelo HTML
+	            String userName = json.getString("userName");
+	            String password = json.getString("password");
+	            return modelo.logarUsuario(userName, password);
+//	               boolean usuario = modelo.logarUsuario(userName, password);
+//	                if(usuario != false){
+//	                    JSONArray jsonResult = new JSONArray();
+//	                    JSONObject jsonObj = new JSONObject();
+//	                    jsonObj.put("status", 1);
+//	                    jsonObj.put("userName", userName);
+//	                    jsonResult.put(jsonObj);
+//	                    return jsonResult;
+//	                } else {
+//	                }
+//	            JSONArray jsonResult = new JSONArray();
+//	            JSONObject jsonObj = new JSONObject();
+//	            jsonObj.put("status", 0);
+//	            jsonResult.put(jsonObj);
+//	            return jsonResult;		
+			}
 		});
+		
 	}
 
 	public void listarUsuariosSistema() {

@@ -95,7 +95,7 @@ function verificaUsuario() {
 
 	//Implementando passar atributos por protocolo HTTP
 	$.post("/usuario/login", JSON.stringify({'userName': usuario, 'password': senha}), function(data){
-	if(data[0].status == 0){
+	if(data){
 					checkCookie();
 					window.location.href = '../rootpage/index.html';
 				} else {
