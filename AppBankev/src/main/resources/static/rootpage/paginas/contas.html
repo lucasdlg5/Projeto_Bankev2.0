@@ -35,6 +35,107 @@
         href="../css/simple-sidebar.css"
         rel="stylesheet"
     ></link>
+
+
+    <script language="JavaScript">
+       
+
+        function getCookie(cname) {
+            var name = cname + "=";
+            var decodedCookie = decodeURIComponent(document.cookie);
+            var ca = decodedCookie.split(';');
+            for(var i = 0; i < ca.length; i++) {
+                var c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+      
+        function checkCookie() {
+            console.log("Verificando Cookies...");
+            console.log(document.cookie);
+          var username=getCookie("usernameLogin");
+          
+          if (username != "") {
+            console.log("Esta armazenado na variavel! " + username);
+            enviaDado(username);
+          } else {
+             //user = prompt("Please enter your name:","");
+             //if (user != "" && user != null) {
+                 alert("O usuario nao esta armazenado nos cookies... Refaça o login!");
+                 location.href = "/login-base/index.html";
+                 //setCookie("statusLogin", "ok", 30);
+             //}
+          }
+      }
+          window.onload = function verCook() {
+              //var cook = document.cookie;
+              checkCookie ();
+            
+              //if (document.cookie != "ok"){
+              //    console.log("Nao");
+              //    alert(document.cookie);
+              //    alert("É necessario fazer login!!");
+              //    location.href = "../login-base/index.html";
+              //}
+          }
+
+        function enviaDado(){
+       // console.log("Entrando funcao")
+            var url = "/buscarContaUsuarioControll/"+getCookie("usernameLogin")+"";
+            $.getJSON(url, function(data) {
+                //console.log("Entrou no getJSON")
+                    $.each(data, function(i){
+                        console.log(i);
+                        //String cpf,String numeroDeConta,Double valorFatura, int codigoBarra,Boolean pago, LocalDate data
+                        console.log(this.cpf) //Funcionando
+                        console.log(this.numeroDeConta)
+                        console.log(this.valorFatura)
+                        console.log(this.codigoBarra)
+                        console.log(this.pago)
+                        console.log(this.data)
+                        console.log()
+                        console.log()
+                        //Exemplo
+                        //itens.push("<tr> <td>"+ this.user +"</td><td>"+ this.email +"</td><td>"+ this.cpf + "</td></tr>");
+
+                        //Arrumar
+                        //itens.push(
+
+                            //Falta estruturar este HTML para os cartoes e inserir as saidas do I na ordem usanto o This.i!!
+                            //        <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                            //        <div class="card-header"> 
+                            //            <a href="banco_info.html" type="submit" class="btn btn-success">
+                            //                Pagar a conta
+                            //            </a>
+                            //        </div>
+                            //            <div class="card-body">
+                            //                <h5 class="card-title">
+                            //                    Success card title
+                            //                </h5>
+                            //                <p class="card-text">
+                            //                    Some quick example text to build on the card title and make up the bulk of the cards content.
+                            //                </p>
+                            //            </div>
+                            //        </div>
+                        //);
+
+
+                        //
+
+
+
+                    });
+            });
+        }
+    </script>
+
+
 </head>
 
 <body>
@@ -87,30 +188,24 @@
                 <br>
                 <br>
 
-                <label for="exampleFormControlSelect1">Escolha uma conta para pagar</label>
+               <!-- Conteudo aqui -->
 
-                <select class="form-control form-control-lg">
-                    <option>Escolha uma Conta</option>
-
-                    <option>Luz</option>
-
-                    <option>Agua</option>
-
-                    <option>Internet</option>
-
-                    <option>Outros</option>
-                </select>
-
-                <br>
-
-                <a
-                    href="#"
+               <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+                <div class="card-header"> <a
+                    href="banco_info.html"
                     type="submit"
                     class="btn btn-success"
-                >Consultar</a>
+                >Pagar a conta</a></div>
+                <div class="card-body">
+                  <h5 class="card-title">Success card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+              </div>
 
-                <br>
-                <br>
+
+               <!-- Conteudo aqui -->
+
+
                 <!-- <h1>Bem-vindo ao Banco Online Bankev!</h1>
                 <p>Aqui você poderá gerenciar todos os tipos de funções que deseja</p>
                 <p>Utilize o botão abaixo para abrir o painel de opções à esquerda.</p> -->

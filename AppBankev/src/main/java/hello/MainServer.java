@@ -51,21 +51,23 @@ public class MainServer {
 		
 		controller.confBanco();
 		
+		controller.buscarContaUsuarioControll();
+		
 				
     }
     
     public static void inicializarUsuarios(){
 //    	List<Usuario> database = new ArrayLis	t<Usuario>();
 
-    	/*
-    	modelo.cadastrarUsuario(new Usuario("Lucas Domingos", "123456789", "1@1.com","lucasdlg","123", "987654321"));
-    	modelo.cadastrarUsuario(new Usuario("Karinao Silva", "123456788", "2@2.com","karinaoS","124", "987654323"));
-    	modelo.cadastrarSaldo(new Saldo("987654321","Bradesco",5000.00));
-    	modelo.cadastrarBanco(new Banco("987654321","Bradesco","bradesco@email.com"));
-    	modelo.cadastrarConta(new Conta("123456789","987654321",50.30,789456,false,null));
-    	modelo.cadastrarConta(new Conta("123456789","987654321",60.30,889456,true,null));
-    	modelo.cadastrarConta(new Conta("123456789","987654321",150.30,989456,false,null));
-    	*/
+//    	
+//	    	modelo.cadastrarUsuario(new Usuario("Lucas Domingos", "123456789", "1@1.com","lucasdlg","123", "987654321"));
+//	    	modelo.cadastrarUsuario(new Usuario("Karinao Silva", "123456788", "2@2.com","karinaoS","124", "987654323"));
+//	    	modelo.cadastrarSaldo(new Saldo("987654321","Bradesco",5000.00));
+//	    	modelo.cadastrarBanco(new Banco("987654321","Bradesco","bradesco@email.com"));
+	    	modelo.cadastrarConta(new Conta("33333333333","102030",50.30,789456,false,null));
+	    	modelo.cadastrarConta(new Conta("33333333333","102030",60.30,889456,true,null));
+	    	modelo.cadastrarConta(new Conta("33333333333","102030",150.30,989456,false,null));
+    	
     	
     	
     	

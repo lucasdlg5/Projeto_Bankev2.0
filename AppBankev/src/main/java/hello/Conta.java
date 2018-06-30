@@ -72,6 +72,8 @@ public class Conta {
 		this.pago = pago;
 	}
 
-	
+	public String toString() {
+        return "CPF: "+this.cpf+"\nNumero da conta: "+this.numeroDeConta+"\nValor da fatura: "+this.valorFatura+"\nCodigo de Barras: "+this.codigoBarra+"\nPago? "+this.pago+"\nData: "+this.data;
+    }
 
 }

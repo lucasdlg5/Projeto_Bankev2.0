@@ -106,4 +106,17 @@ public class Controller {
 		});
 	}
 	
+	public String buscarContaUsuarioControll () {
+		get("/buscarContaUsuarioControll/:usuario", (req,res)->{
+			List<Usuario> UsuariosEncontrados = modelo.buscarUsuarioPorUser(req.params(":usuario"));
+//			System.out.println(UsuariosEncontrados.get(0).getNumeroDaConta());
+//			System.out.println(modelo.buscarContaUsuario(UsuariosEncontrados.get(0).getCpf(),UsuariosEncontrados.get(0).getNumeroDaConta()).toString());
+					return new Gson().toJson(modelo.buscarContaUsuario(UsuariosEncontrados.get(0).getCpf(),UsuariosEncontrados.get(0).getNumeroDaConta())); //ALTERAR A PESSOA DO RETORNO ALEM DO 0!!! ISSO AQUI É GAMBIARRA HARDCORE
+		});
+		return null;
+	}
+	
+	
+	
+	
 }
