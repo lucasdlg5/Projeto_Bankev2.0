@@ -73,4 +73,5 @@ public class Conexao{
         return found;
     }*/
 
+    public Usuario logar
 }
