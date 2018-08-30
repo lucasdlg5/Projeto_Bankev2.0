@@ -17,12 +17,12 @@ public class Conexao{
 
 
     // HTTP GET request
-    /*
-    public List<Music> sendGet() throws Exception {
+
+    public List<hello.Usuario> sendGet() throws Exception {
 
         //https://api.myjson.com/bins/3kpyw
         //http://api.flickr.com/services/feeds/photos_public.gne?tags=beatles&format=json&jsoncallback=?
-        String url = "https://api.myjson.com/bins/3gkfk";
+        String url = "127.0.0.1:5543/usuario/:username/:password";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
@@ -49,21 +49,21 @@ public class Conexao{
 
         //System.out.println(response.toString());
 
-        List<Music> found = findAllItems(new JSONArray(response.toString()));
+        List<hello.Usuario> found = findAllItems(new JSONArray(response.toString()));
 
         return found;
     }
 
-    public List<Music> findAllItems(JSONArray response) {
+    public List<hello.Usuario> findAllItems(JSONArray response) {
 
-        List<Music> found = new LinkedList<Music>();
+        List<hello.Usuario> found = new LinkedList<hello.Usuario>();
 
         try {
 
 
             for (int i = 0; i < response.length(); i++) {
                 JSONObject obj = response.getJSONObject(i);
-                found.add(new Music(obj.getString("chords"), obj.getString("band"), obj.getString("musicName")));
+                found.add(new hello.Usuario(obj.getString("nomeCompleto"), obj.getString("cpf"), obj.getString("user"), obj.getString("senha"), obj.getString("email"), obj.getString("numeroDaConta")));
             }
 
         } catch (JSONException e) {
@@ -71,7 +71,5 @@ public class Conexao{
         }
 
         return found;
-    }*/
-
-    public Usuario logar
+    }
 }
