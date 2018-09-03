@@ -1,4 +1,4 @@
-package sjc.fatec.sp.br.bankev20;
+package hello;
 
         import java.io.BufferedReader;
         import java.io.InputStreamReader;
@@ -19,18 +19,13 @@ public class Conexao{
     // HTTP GET request
 
     public List<hello.Usuario> sendGet() throws Exception {
-
-        //https://api.myjson.com/bins/3kpyw
-        //http://api.flickr.com/services/feeds/photos_public.gne?tags=beatles&format=json&jsoncallback=?
-        String url = "127.0.0.1:5543/usuario/:username/:password";
+        String url = "127.0.0.1:5543/usuario/login";
 
         URL obj = new URL(url);
         HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        // optional default is GET
         con.setRequestMethod("GET");
 
-        //add request header
         con.setRequestProperty("User-Agent", USER_AGENT);
 
         int responseCode = con.getResponseCode();
@@ -47,8 +42,6 @@ public class Conexao{
         }
         in.close();
 
-        //System.out.println(response.toString());
-
         List<hello.Usuario> found = findAllItems(new JSONArray(response.toString()));
 
         return found;
@@ -56,14 +49,14 @@ public class Conexao{
 
     public List<hello.Usuario> findAllItems(JSONArray response) {
 
-        List<hello.Usuario> found = new LinkedList<hello.Usuario>();
+        List<hello.Usuario> found = new LinkedList<>();
 
         try {
 
 
             for (int i = 0; i < response.length(); i++) {
                 JSONObject obj = response.getJSONObject(i);
-                found.add(new hello.Usuario(obj.getString("nomeCompleto"), obj.getString("cpf"), obj.getString("user"), obj.getString("senha"), obj.getString("email"), obj.getString("numeroDaConta")));
+                found.add(new hello.Usuario(obj.getString("userName"), obj.getString("password")));
             }
 
         } catch (JSONException e) {
@@ -72,4 +65,6 @@ public class Conexao{
 
         return found;
     }
+
+
 }
