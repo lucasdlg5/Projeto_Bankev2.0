@@ -1,6 +1,6 @@
-package sjc.fatec.sp.br.bankev20;
+package hello;
 
-        import java.io.BufferedReader;
+import java.io.BufferedReader;
         import java.io.InputStreamReader;
         import java.net.HttpURLConnection;
         import java.net.URL;
@@ -73,5 +73,5 @@ public class Conexao{
         return found;
     }*/
 
-    public Usuario logar
+//    public Usuario logar
 }

@@ -1,6 +1,6 @@
 package hello;
 
-import com.db4o.query.Query;
+//import com.db4o.query.Query;
 
 public class Admin {
 	
