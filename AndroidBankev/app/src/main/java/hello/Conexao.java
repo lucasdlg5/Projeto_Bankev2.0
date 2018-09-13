@@ -1,6 +1,7 @@
 package hello;
 
 import android.app.AlertDialog;
+import android.os.StrictMode;
 import android.util.Log;
 
 import org.json.JSONArray;
@@ -9,9 +10,11 @@ import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.LinkedList;
 import java.util.List;
@@ -86,18 +89,18 @@ public class Conexao{
         return true;
     }
 
-    public String sendPost(String login, String senha) {
-        try {
-        URL url = new URL("192.168.43.125:5543/usuario/login");
+    public boolean sendPost(String login, String senha) throws MalformedURLException, IOException {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
 
-        //URL url = new URL("127.0.0.1:5543/usuario/login");
+        URL url = new URL("http://192.168.43.125:5543/usuario/login");
+
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         conn.setRequestMethod("POST");
         conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
         conn.setRequestProperty("Accept","application/json");
-            return "Ate aqui foi";
-        /*conn.setDoOutput(true);
+        conn.setDoOutput(true);
         conn.setDoInput(true);
 
         JSONObject objetoUsuario = new JSONObject();
@@ -107,9 +110,8 @@ public class Conexao{
         } catch (JSONException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            return "Falha na criacao do JSON";
+            return false;
         }
-            return "Ate aqui foi";
         Log.i("JSON", objetoUsuario.toString());
         DataOutputStream os = new DataOutputStream(conn.getOutputStream());
         os.writeBytes(objetoUsuario.toString());
@@ -122,11 +124,10 @@ public class Conexao{
 
         final InputStream stream = conn.getInputStream();
         conn.disconnect();
-       */
-        //return new Scanner(stream, "UTF-8").next();
-        } catch (Exception e) {
-        e.printStackTrace();
-        return "Não funcionou";
+        if(new Scanner(stream, "UTF-8").next().equals("true")){
+            return true;
+        }else{
+            return false;
         }
 
     }

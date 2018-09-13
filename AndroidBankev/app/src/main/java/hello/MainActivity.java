@@ -24,8 +24,20 @@ public class MainActivity extends AppCompatActivity {
 
         String login = String.valueOf(txtLogin.getText());
         String senha = String.valueOf(txtSenha.getText());
-
+        try{
         Conexao cnn = new Conexao();
-        lblResultado.setText(cnn.sendPost(login, senha));
+        boolean teste = cnn.sendPost(login, senha);
+        if(teste){
+            lblResultado.setText("Sucesso, bem vindo");
+            //entrou pasasar para outra tela
+        }else
+        {
+            //nao entrou, aparecer mensagem
+            lblResultado.setText("Vefique ortagrafia");
+        }
+        }catch(Exception e){
+            lblResultado.setText(e.toString());
+        }
+
     }
 }
