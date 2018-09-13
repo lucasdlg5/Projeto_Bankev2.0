@@ -88,7 +88,7 @@ public class Conexao{
 
     public String sendPost(String login, String senha) {
         try {
-        URL url = new URL("172.16.3.108:5543/usuario/login");
+        URL url = new URL("192.168.43.125:5543/usuario/login");
 
         //URL url = new URL("127.0.0.1:5543/usuario/login");
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
