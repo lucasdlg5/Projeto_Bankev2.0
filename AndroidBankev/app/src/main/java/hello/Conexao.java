@@ -23,8 +23,8 @@ import java.util.Scanner;
 public class Conexao{
 
     private final String USER_AGENT = "Mozilla/5.0";
-
-
+    public final String IP =  "http://192.168.43.125";
+    public final String PORTA = ":5543";
     // HTTP GET request
 
     public List<hello.Usuario> sendGet() throws Exception {
@@ -76,24 +76,12 @@ public class Conexao{
         return found;
     }
 
-    public Boolean logarUsuario(String login, String senha){
-        JSONObject objetoUsuario = new JSONObject();
-        try{
-        objetoUsuario.put("userName", login);
-        objetoUsuario.put("password", senha);
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
 
-        return true;
-    }
-
-    public boolean sendPost(String login, String senha) throws MalformedURLException, IOException {
+    public boolean sendPostLogin(String login, String senha) throws MalformedURLException, IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL("http://192.168.43.125:5543/usuario/login");
+        URL url = new URL(IP + PORTA + "/usuario/login");
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -130,5 +118,46 @@ public class Conexao{
             return false;
         }
 
+    }
+
+    public String sendPostRecuperaUsuario(String login) throws MalformedURLException, IOException {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        URL url = new URL(IP + PORTA + "/" + login.toString());
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        conn.setRequestMethod("GET");
+        conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
+        conn.setRequestProperty("Accept","application/json");
+        conn.setDoOutput(true);
+        conn.setDoInput(true);
+/*
+        JSONObject objetoUsuario = new JSONObject();
+        try{
+            objetoUsuario.put("userName", login);
+            objetoUsuario.put("password", senha);
+        } catch (JSONException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+            return false;
+        }
+        Log.i("JSON", objetoUsuario.toString());
+        DataOutputStream os = new DataOutputStream(conn.getOutputStream());
+        os.writeBytes(objetoUsuario.toString());
+
+        os.flush();
+        os.close();
+
+        Log.i("STATUS", String.valueOf(conn.getResponseCode()));
+        Log.i("MSG" , conn.getResponseMessage());
+*/
+        final InputStream stream = conn.getInputStream();
+
+        JSONObject result = new JSONObject();
+
+        conn.disconnect();
+        return new Scanner(stream, "UTF-8").next();
     }
 }
