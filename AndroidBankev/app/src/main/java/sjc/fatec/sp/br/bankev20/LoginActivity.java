@@ -1,4 +1,4 @@
-package Forms;
+package sjc.fatec.sp.br.bankev20;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -32,16 +32,12 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import sjc.fatec.sp.br.bankev20.R;
-
 import static android.Manifest.permission.READ_CONTACTS;
 
 /**
  * A login screen that offers login via email/password.
  */
 public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
-
-    Button botao;
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -68,9 +64,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
-
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         // Set up the login form.
@@ -99,17 +92,6 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
-
-        /*botao = findViewById(R.id.button);
-        botao.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view){
-
-
-            }
-        });*/
-
-
     }
 
     private void populateAutoComplete() {
