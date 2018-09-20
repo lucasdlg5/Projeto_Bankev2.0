@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.List;
+
 import hello.Conexao;
 import sjc.fatec.sp.br.bankev20.R;
 
@@ -26,10 +28,10 @@ public class MainActivity extends AppCompatActivity {
         String senha = String.valueOf(txtSenha.getText());
         try{
         Conexao cnn = new Conexao();
-        boolean teste = cnn.sendPostLogin(login, senha);
-        String a = cnn.sendPostRecuperaUsuario(login);
-        if(teste){
-            lblResultado.setText(a);
+        boolean testeLogin = cnn.sendPostLogin(login, senha);
+        List<Usuario> teste = cnn.sendGetRecuperaUsuario(login);
+        if(testeLogin){
+            lblResultado.setText(String.valueOf(teste.size()));
             //entrou pasasar para outra tela
         }else
         {

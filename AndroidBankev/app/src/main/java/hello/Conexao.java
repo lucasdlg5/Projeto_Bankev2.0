@@ -16,6 +16,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -51,27 +52,7 @@ public class Conexao{
         }
         in.close();
 
-        List<hello.Usuario> found = findAllItems(new JSONArray(response.toString()));
-
-        return found;
-    }
-
-    public List<hello.Usuario> findAllItems(JSONArray response) {
-
-        List<hello.Usuario> found = new LinkedList<>();
-
-        try {
-
-
-            for (int i = 0; i < response.length(); i++) {
-                JSONObject obj = response.getJSONObject(i);
-
-                found.add(new hello.Usuario(obj.getString("userName"), obj.getString("password")));
-            }
-
-        } catch (JSONException e) {
-            // handle exception
-        }
+        List<hello.Usuario> found = transformaObjeto(new JSONArray(response.toString()));
 
         return found;
     }
@@ -120,44 +101,53 @@ public class Conexao{
 
     }
 
-    public String sendPostRecuperaUsuario(String login) throws MalformedURLException, IOException {
+    public List<Usuario> sendGetRecuperaUsuario(String login) throws MalformedURLException, IOException, JSONException {
+
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL(IP + PORTA + "/" + login.toString());
+        URL url = new URL(IP + PORTA + "/buscaListUsuarios/" + login.toString());
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
         conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-        conn.setRequestProperty("Accept","application/json");
-        conn.setDoOutput(true);
-        conn.setDoInput(true);
-/*
-        JSONObject objetoUsuario = new JSONObject();
-        try{
-            objetoUsuario.put("userName", login);
-            objetoUsuario.put("password", senha);
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-            return false;
-        }
-        Log.i("JSON", objetoUsuario.toString());
-        DataOutputStream os = new DataOutputStream(conn.getOutputStream());
-        os.writeBytes(objetoUsuario.toString());
 
-        os.flush();
-        os.close();
+        conn.setRequestProperty("User-Agent", USER_AGENT);
 
-        Log.i("STATUS", String.valueOf(conn.getResponseCode()));
-        Log.i("MSG" , conn.getResponseMessage());
-*/
-        final InputStream stream = conn.getInputStream();
-
-        JSONObject result = new JSONObject();
 
         conn.disconnect();
-        return new Scanner(stream, "UTF-8").next();
+
+        BufferedReader in = new BufferedReader(
+                new InputStreamReader(conn.getInputStream()));
+        String inputLine;
+        StringBuffer response = new StringBuffer();
+
+        while ((inputLine = in.readLine()) != null) {
+            response.append(inputLine);
+        }
+        in.close();
+
+        List<Usuario> found = transformaObjeto(new JSONArray(response.toString()));
+
+        return found;
+    }
+
+
+    public List<hello.Usuario> transformaObjeto(JSONArray response) {
+
+        List<hello.Usuario> found = new LinkedList<>();
+
+        try {
+
+            for (int i = 0; i < response.length(); i++) {
+                JSONObject obj = response.getJSONObject(i);
+
+                found.add(new hello.Usuario(obj.getString("nomeCompleto"), obj.getString("cpf"), obj.getString("email"),obj.getString("user"), obj.getString("senha"), obj.getString("numeroDaConta")));
+            }
+
+        } catch (JSONException e) {
+            found = null;
+        }
+        return found;
     }
 }
