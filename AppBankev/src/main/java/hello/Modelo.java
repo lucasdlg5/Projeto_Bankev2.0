@@ -274,11 +274,27 @@ public class Modelo {
 		return usuarios;
 	}
 
+	public void limpaUsuario() {
+		List<Usuario> allUsuario = getUsuarios();
+		for(Usuario usu:allUsuario) {
+			usuarios.delete(usu);	
+		}
+		usuarios.commit();
+	}
+	
 	public List<Banco> getBancos() {
 		Query query = bancos.query();
 		query.constrain(Banco.class);
 	    ObjectSet<Banco> bancos = query.execute();
 		return bancos;
+	}
+	
+	public void limpaBancos() {
+		List<Banco> allBancos = getBancos();
+		for(Banco ban:allBancos) {
+			bancos.delete(ban);	
+		}
+		bancos.commit();
 	}
 
 	public List<Admin> getAdmin() {
@@ -286,6 +302,44 @@ public class Modelo {
 		query.constrain(Admin.class);
 	    ObjectSet<Admin> admins = query.execute();
 		return admins;
+	}
+	
+	public void limpaAdmins() {
+		List<Admin> allAdmin = getAdmin();
+		for(Admin adm:allAdmin) {
+			admins.delete(adm);	
+		}
+		admins.commit();
+	}
+	
+	public List<Conta> getContas() {
+		Query query = contas.query();
+		query.constrain(Conta.class);
+	    ObjectSet<Conta> contas = query.execute();
+		return contas;
+	}
+	
+	public void limpaContas() {
+		List<Conta> allConta = getContas();
+		for(Conta cnt:allConta) {
+			contas.delete(cnt);
+		}
+		contas.commit();
+	}
+	
+	public List<Saldo> getSaldos(){
+		Query query = saldos.query();
+		query.constrain(Saldo.class);
+	    ObjectSet<Saldo> saldos = query.execute();
+		return saldos;
+	}
+
+	public void limpaSaldos() {
+		List<Saldo> allsaldos = getSaldos();
+		for(Saldo sld:allsaldos) {
+			saldos.delete(sld);
+		}
+		saldos.commit();
 	}
 
 }

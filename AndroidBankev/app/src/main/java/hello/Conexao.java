@@ -24,17 +24,17 @@ import java.util.Scanner;
 public class Conexao{
 
     private final String USER_AGENT = "Mozilla/5.0";
-    public final String IP =  "http://192.168.43.125";
-    public final String PORTA = ":5543";
-    // HTTP GET request
+    public final String IP =  "http://192.168.42.100";
+        public final String PORTA = ":5543";
+        // HTTP GET request
 
-    public List<hello.Usuario> sendGet() throws Exception {
-        String url = "127.0.0.1:5543/usuario/login";
+        public List<hello.Usuario> sendGet() throws Exception {
+            String url = "127.0.0.1:5543/usuario/login";
 
-        URL obj = new URL(url);
-        HttpURLConnection con = (HttpURLConnection) obj.openConnection();
+            URL obj = new URL(url);
+            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
 
-        con.setRequestMethod("GET");
+            con.setRequestMethod("GET");
 
         con.setRequestProperty("User-Agent", USER_AGENT);
 

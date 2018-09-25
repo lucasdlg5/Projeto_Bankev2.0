@@ -59,22 +59,17 @@ public class MainServer {
     public static void inicializarUsuarios(){
 //    	List<Usuario> database = new ArrayLis	t<Usuario>();
 
-//    	
-//	    	modelo.cadastrarUsuario(new Usuario("Lucas Domingos", "123456789", "1@1.com","lucasdlg","123", "987654321"));
-//	    	modelo.cadastrarUsuario(new Usuario("Karinao Silva", "123456788", "2@2.com","karinaoS","124", "987654323"));
-//	    	modelo.cadastrarSaldo(new Saldo("987654321","Bradesco",5000.00));
-//	    	modelo.cadastrarBanco(new Banco("987654321","Bradesco","bradesco@email.com"));
+    		modelo.limpaUsuario();
+    		modelo.limpaBancos();
+    		modelo.limpaContas();
+    		modelo.limpaUsuario();
+	    	modelo.cadastrarUsuario(new Usuario("Lucas Domingos", "123456789", "1@1.com","lucasdlg","123", "987654321"));
+	    	modelo.cadastrarUsuario(new Usuario("Karinao Silva", "123456788", "2@2.com","karinaoS","124", "987654323"));
+	    	modelo.cadastrarSaldo(new Saldo("987654321","Bradesco",5000.00));
+	    	modelo.cadastrarBanco(new Banco("987654321","Bradesco","bradesco@email.com"));
 	    	modelo.cadastrarConta(new Conta("33333333333","102030",50.30,789456,false,null));
 	    	modelo.cadastrarConta(new Conta("33333333333","102030",60.30,889456,true,null));
 	    	modelo.cadastrarConta(new Conta("33333333333","102030",150.30,989456,false,null));
     	
-    	
-    	
-    	
-//		database.add(new Usuario("lucasdlg", "123", "1@1.com", null, null, null));
-//		database.add(new Usuario("kevao", "1234", "2@2.com", null, null, null));
-//		database.add(new Usuario("karinao", "1235", "3@3.com", null, null, null));
-//		database.add(new Usuario("matheus", "1236", "4@4.com", null, null, null));
-//		
     }
 }
