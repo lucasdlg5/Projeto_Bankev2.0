@@ -1,6 +1,5 @@
 package hello;
 
-import android.app.AlertDialog;
 import android.os.StrictMode;
 import android.util.Log;
 
@@ -16,7 +15,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
@@ -149,5 +147,21 @@ public class Conexao{
             found = null;
         }
         return found;
+    }
+
+    public void SendGetCadUsuario(String nome, String cpf, String email, String login, String senha, String conta) throws MalformedURLException, IOException, JSONException{
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+
+        URL url = new URL(IP + PORTA + "/addUsuario/" + nome + "/" + cpf + "/" + email + "/" + login + "/" + senha + "/" + conta);
+
+        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+
+        conn.setRequestMethod("GET");
+
+        conn.setRequestProperty("User-Agent", USER_AGENT);
+
+
+        conn.disconnect();
     }
 }

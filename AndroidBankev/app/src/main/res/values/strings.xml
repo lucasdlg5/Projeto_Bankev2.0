@@ -16,4 +16,12 @@
     <string name="EntradaLogin">Login</string>
     <string name="EntradaSenha">Senha</string>
     <string name="Logar">Logar</string>
+    <string name="CadUsuario">Cadastro de Usuário</string>
+    <string name="txtNomeCompleto">Nome Completo</string>
+    <string name="txtCPF">CPF (Somente números)</string>
+    <string name="txtEmail">Email</string>
+    <string name="txtLogin">Login</string>
+    <string name="txtSenha">Senha</string>
+    <string name="txtConta">Conta</string>
+    <string name="btnCadastrar">Cadastrar</string>
 </resources>

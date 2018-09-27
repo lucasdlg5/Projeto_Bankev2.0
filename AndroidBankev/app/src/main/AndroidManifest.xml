@@ -24,7 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="hello.LoginActivity"></activity>
+        <activity android:name="hello.LoginActivity" />
+        <activity android:name="hello.CadastroBancoActivity"></activity>
     </application>
 
 </manifest>
