@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="hello.CadastroBancoActivity">
+    tools:context="hello.CadastroUsuarioActivity">
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -94,7 +94,7 @@
             android:layout_height="wrap_content"
             android:ems="10"
             android:hint="@string/txtConta"
-            android:inputType="text|textPassword"
+            android:inputType="text"
             tools:layout_editor_absoluteX="85dp"
             tools:layout_editor_absoluteY="367dp" />
 
@@ -106,10 +106,24 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
         android:layout_marginTop="47dp"
+        android:onClick="onClickSearch"
         android:text="@string/btnCadastrar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <TextView
+        android:id="@+id/lblCadResultado"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="aaa"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
 </android.support.constraint.ConstraintLayout>

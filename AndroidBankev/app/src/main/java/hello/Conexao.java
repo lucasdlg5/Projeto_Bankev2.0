@@ -149,7 +149,7 @@ public class Conexao{
         return found;
     }
 
-    public void SendGetCadUsuario(String nome, String cpf, String email, String login, String senha, String conta) throws MalformedURLException, IOException, JSONException{
+    public String SendGetCadUsuario(String nome, String cpf, String email, String login, String senha, String conta) throws MalformedURLException, IOException, JSONException{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -161,7 +161,9 @@ public class Conexao{
 
         conn.setRequestProperty("User-Agent", USER_AGENT);
 
-
+        final InputStream stream = conn.getInputStream();
         conn.disconnect();
+        String teste = new Scanner(stream, "UTF-8").next();
+        return teste;
     }
 }

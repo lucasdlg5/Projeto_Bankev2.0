@@ -24,4 +24,5 @@
     <string name="txtSenha">Senha</string>
     <string name="txtConta">Conta</string>
     <string name="btnCadastrar">Cadastrar</string>
+    <string name="CadastroUsuarios">Registre-se Aqui</string>
 </resources>

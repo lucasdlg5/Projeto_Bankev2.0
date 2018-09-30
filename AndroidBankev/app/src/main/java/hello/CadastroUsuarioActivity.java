@@ -5,36 +5,43 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import org.json.JSONException;
+
+import java.io.IOException;
+
 import sjc.fatec.sp.br.bankev20.R;
 
-public class CadastroBancoActivity extends AppCompatActivity {
+public class CadastroUsuarioActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_cadastro_banco);
+        setContentView(R.layout.activity_cadastro_usuario);
     }
 
     public void onClickSearch(View view){
         TextView txtNomeCompleto = findViewById(R.id.txtNomeCompleto);
         TextView txtCPF = findViewById(R.id.txtCPF);
-        TextView txtEmail = findViewById(R.id.email);
+        TextView txtEmail = findViewById(R.id.txtEmail);
         TextView txtLogin = findViewById(R.id.txtLogin);
         TextView txtSenha = findViewById(R.id.txtSenha);
         TextView txtConta = findViewById(R.id.txtConta);
+        TextView lblCadResultado = findViewById(R.id.lblCadResultado);
 
         String nome = String.valueOf(txtNomeCompleto.getText());
         String cpf = String.valueOf(txtCPF.getText());
-        String emai = String.valueOf(txtEmail.getText());
+        String email = String.valueOf(txtEmail.getText());
         String login = String.valueOf(txtLogin.getText());
         String senha = String.valueOf(txtSenha.getText());
         String conta = String.valueOf(txtConta.getText());
 
-        try{
-            Conexao cnn = new Conexao();
-
-        }catch{
-
+        Conexao cnn = new Conexao();
+        try {
+            lblCadResultado.setText(cnn.SendGetCadUsuario(nome, cpf, email, login, senha, conta));
+        } catch (IOException e) {
+            lblCadResultado.setText(e.getMessage());
+        } catch (JSONException e) {
+            lblCadResultado.setText(e.getMessage());
         }
     }
 }
