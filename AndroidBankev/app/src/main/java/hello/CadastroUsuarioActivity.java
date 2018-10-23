@@ -37,7 +37,14 @@ public class CadastroUsuarioActivity extends AppCompatActivity {
 
         Conexao cnn = new Conexao();
         try {
-            lblCadResultado.setText(cnn.SendGetCadUsuario(nome, cpf, email, login, senha, conta));
+            if(cnn.SendGetCadUsuario(nome, cpf, email, login, senha, conta)){
+                lblCadResultado.setText("Usuario Cadastrado com Sucesso");
+                /*todo ir para tela de perfil*/
+            }
+            else{
+                lblCadResultado.setText("Falha ao cadastrar, tente novamente em breve");
+            }
+
         } catch (IOException e) {
             lblCadResultado.setText(e.getMessage());
         } catch (JSONException e) {

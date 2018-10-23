@@ -22,39 +22,9 @@ import java.util.Scanner;
 public class Conexao{
 
     private final String USER_AGENT = "Mozilla/5.0";
-    public final String IP =  "http://192.168.42.100";
+    public final String IP =  "http://192.168.42.28";
         public final String PORTA = ":5543";
         // HTTP GET request
-
-        public List<hello.Usuario> sendGet() throws Exception {
-            String url = "127.0.0.1:5543/usuario/login";
-
-            URL obj = new URL(url);
-            HttpURLConnection con = (HttpURLConnection) obj.openConnection();
-
-            con.setRequestMethod("GET");
-
-        con.setRequestProperty("User-Agent", USER_AGENT);
-
-        int responseCode = con.getResponseCode();
-        System.out.println("\nSending 'GET' request to URL : " + url);
-        System.out.println("Response Code : " + responseCode);
-
-        BufferedReader in = new BufferedReader(
-                new InputStreamReader(con.getInputStream()));
-        String inputLine;
-        StringBuffer response = new StringBuffer();
-
-        while ((inputLine = in.readLine()) != null) {
-            response.append(inputLine);
-        }
-        in.close();
-
-        List<hello.Usuario> found = transformaObjeto(new JSONArray(response.toString()));
-
-        return found;
-    }
-
 
     public boolean sendPostLogin(String login, String senha) throws MalformedURLException, IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
@@ -149,7 +119,7 @@ public class Conexao{
         return found;
     }
 
-    public String SendGetCadUsuario(String nome, String cpf, String email, String login, String senha, String conta) throws MalformedURLException, IOException, JSONException{
+    public Boolean SendGetCadUsuario(String nome, String cpf, String email, String login, String senha, String conta) throws MalformedURLException, IOException, JSONException{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
@@ -164,6 +134,6 @@ public class Conexao{
         final InputStream stream = conn.getInputStream();
         conn.disconnect();
         String teste = new Scanner(stream, "UTF-8").next();
-        return teste;
+        return !teste.isEmpty();
     }
 }
