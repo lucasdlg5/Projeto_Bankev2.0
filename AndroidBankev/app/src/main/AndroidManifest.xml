@@ -20,11 +20,19 @@
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity android:name="hello.LoginActivity" />
-        <activity android:name="hello.CadastroUsuarioActivity"></activity>
+        <activity android:name="hello.CadastroUsuarioActivity" />
+        <activity android:name=".activity_home" />
+        <activity android:name=".activity_administracao" />
+        <activity android:name=".activity_banksmycpf" />
+        <activity android:name=".activity_contas_a_pagar" />
+        <activity android:name=".activity_CreditCardBill" />
+        <activity android:name=".activity_saldoBancos" />
+        <activity android:name=".activity_profile"></activity>
     </application>
 
 </manifest>
