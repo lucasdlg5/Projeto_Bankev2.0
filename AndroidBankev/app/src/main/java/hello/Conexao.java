@@ -22,15 +22,13 @@ import java.util.Scanner;
 public class Conexao{
 
     private final String USER_AGENT = "Mozilla/5.0";
-    public final String IP =  "http://192.168.42.28";
-        public final String PORTA = ":5543";
-        // HTTP GET request
+    public final String IP =  "https://projetobankev.herokuapp.com";
 
     public boolean sendPostLogin(String login, String senha) throws MalformedURLException, IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL(IP + PORTA + "/usuario/login");
+        URL url = new URL(IP + "/usuario/login");
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -74,7 +72,7 @@ public class Conexao{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL(IP + PORTA + "/buscaListUsuarios/" + login.toString());
+        URL url = new URL(IP + "/buscaListUsuarios/" + login.toString());
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -123,7 +121,7 @@ public class Conexao{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL(IP + PORTA + "/addUsuario/" + nome + "/" + cpf + "/" + email + "/" + login + "/" + senha + "/" + conta);
+        URL url = new URL(IP + "/addUsuario/" + nome + "/" + cpf + "/" + email + "/" + login + "/" + senha + "/" + conta);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
