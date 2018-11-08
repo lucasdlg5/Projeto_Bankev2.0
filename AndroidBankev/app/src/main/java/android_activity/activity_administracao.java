@@ -1,13 +1,15 @@
-package sjc.fatec.sp.br.bankev20;
+package android_activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class activity_contas_a_pagar extends AppCompatActivity {
+import sjc.fatec.sp.br.bankev20.R;
+
+public class activity_administracao extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_contas_a_pagar);
+        setContentView(R.layout.activity_administracao);
     }
 }
