@@ -59,9 +59,13 @@ public class Conexao{
 
         final InputStream stream = conn.getInputStream();
         conn.disconnect();
-        if(new Scanner(stream, "UTF-8").next().equals("true")){
-            return true;
-        }else{
+        try {
+            if(new Scanner(stream, "UTF-8").next().equals("true")){
+                return true;
+            }else{
+                return false;
+            }
+        }catch(Exception e){
             return false;
         }
 

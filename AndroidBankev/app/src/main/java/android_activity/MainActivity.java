@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import java.util.NoSuchElementException;
+
 import hello.CadastroUsuarioActivity;
 import hello.Conexao;
 import sjc.fatec.sp.br.bankev20.R;
@@ -34,14 +36,14 @@ public class MainActivity extends AppCompatActivity {
         //List<Usuario> teste = cnn.sendGetRecuperaUsuario(login);
         if(doLogin){
             //lblResultado.setText(String.valueOf(teste.size()));
-            //lblResultado.setText("Seja bem vindo!");
+            lblResultado.setText("Seja bem vindo!");
             nextWindow = new Intent(MainActivity.this, activity_administracao.class);
             startActivity(nextWindow);
 
         }else
         {
             //nao entrou, aparecer mensagem
-            lblResultado.setText("Vefique a Ortografia");
+            lblResultado.setText("Vefique a Ortografia, ou tente novamente, a aplicação está alocada no Heroku, isso pode causar incosistências.");
         }
         }catch(Exception e){
             lblResultado.setText(e.toString());
