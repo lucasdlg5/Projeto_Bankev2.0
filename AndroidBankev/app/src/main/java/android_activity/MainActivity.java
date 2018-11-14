@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         if(doLogin){
             //lblResultado.setText(String.valueOf(teste.size()));
             //lblResultado.setText("Seja bem vindo!");
-            nextWindow = new Intent(MainActivity.this, activity_administracao.class);
+            nextWindow = new Intent(MainActivity.this, activity_home.class);
             startActivity(nextWindow);
 
         }else
