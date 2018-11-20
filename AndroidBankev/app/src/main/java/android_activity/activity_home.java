@@ -23,7 +23,7 @@ public class activity_home extends AppCompatActivity {
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                nextWindow = new Intent(activity_home.this, activity_administracao.class);
+                nextWindow = new Intent(v.getContext(), activity_administracao.class);
                 startActivity(nextWindow);
             }
         });

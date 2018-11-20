@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
         //List<Usuario> teste = cnn.sendGetRecuperaUsuario(login);
         if(doLogin){
             //lblResultado.setText(String.valueOf(teste.size()));
-            //lblResultado.setText("Seja bem vindo!");
-            nextWindow = new Intent(MainActivity.this, activity_home.class);
+            lblResultado.setText("Seja bem vindo!");
+            nextWindow = new Intent(view.getContext(), activity_home.class);
             startActivity(nextWindow);
 
         }else
