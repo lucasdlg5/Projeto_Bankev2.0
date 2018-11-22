@@ -24,6 +24,7 @@ public class Conexao{
 
     private final String USER_AGENT = "Mozilla/5.0";
     public final String IP =  "https://projetobankev.herokuapp.com";
+    //public final String IP =  "http://192.168.42.28:5543";
 
     public boolean sendPostLogin(String login, String senha) throws MalformedURLException, IOException {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();

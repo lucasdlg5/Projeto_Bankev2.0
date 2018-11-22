@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void openCadastroBanco(View v){
-        Intent intent = new Intent(this, CadastroUsuarioActivity.class);
+        Intent intent = new Intent(v.getContext(), CadastroUsuarioActivity.class);
         startActivity(intent);
     }
 }

@@ -11,19 +11,16 @@ import sjc.fatec.sp.br.bankev20.R;
 public class activity_home extends AppCompatActivity {
 
 
-    Intent nextWindow;
-    final Button button = findViewById(R.id.button2);
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        final Button button = findViewById(R.id.button2);
 
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                nextWindow = new Intent(v.getContext(), activity_administracao.class);
+                Intent nextWindow = new Intent(v.getContext(), activity_administracao.class);
                 startActivity(nextWindow);
             }
         });
