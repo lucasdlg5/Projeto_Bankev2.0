@@ -28,8 +28,11 @@ public class MainActivity extends AppCompatActivity {
         TextView txtSenha = findViewById(R.id.txtSenha);
         TextView lblResultado = findViewById(R.id.lblResultado);
 
-        String login = String.valueOf(txtLogin.getText());
-        String senha = String.valueOf(txtSenha.getText());
+        //String login = String.valueOf(txtLogin.getText());
+        //String senha = String.valueOf(txtSenha.getText());
+
+        String login = "lucasdlg";
+        String senha = "123";
         try{
         Conexao cnn = new Conexao();
         boolean doLogin = cnn.sendPostLogin(login, senha);
@@ -43,7 +46,8 @@ public class MainActivity extends AppCompatActivity {
         }else
         {
             //nao entrou, aparecer mensagem
-            lblResultado.setText("Vefique a Ortografia, ou tente novamente, a aplicação está alocada no Heroku, isso pode causar incosistências.");
+            lblResultado.setText("Vefique a Ortografia, ou tente novamente, a aplicação está alocada no Heroku, isso pode causar incosistências.\n\nDados de tentativa de login:\nUsername: "+login+"\nSenha: "+senha);
+
         }
         }catch(Exception e){
             lblResultado.setText(e.toString());

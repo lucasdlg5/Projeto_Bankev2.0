@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 import sjc.fatec.sp.br.bankev20.R;
 
-public class activity_administracao extends AppCompatActivity {
+public class activity_adm_listar_usuarios extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_administracao);
+        setContentView(R.layout.activity_adm_listar_usuarios);
     }
 }

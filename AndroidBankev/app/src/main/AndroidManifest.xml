@@ -26,12 +26,23 @@
         </activity>
         <activity android:name="hello.CadastroUsuarioActivity" />
         <activity android:name="android_activity.activity_home" />
-        <activity android:name="android_activity.activity_administracao" />
+        <activity android:name="android_activity.activity_home_administracao" />
         <activity android:name="android_activity.activity_banksmycpf" />
         <activity android:name="android_activity.activity_contas_a_pagar" />
         <activity android:name="android_activity.activity_CreditCardBill" />
         <activity android:name="android_activity.activity_saldoBancos" />
-        <activity android:name="android_activity.activity_profile"></activity>
+        <activity android:name="android_activity.activity_profile" />
+        <activity android:name="android_activity.activity_adm_listar_usuarios" />
+        <activity android:name="android_activity.activity_adm_busca_usuarios" />
+        <activity android:name="android_activity.activity_adm_relatorio_saldos" />
+        <activity android:name="android_activity.activity_adm_genc_faturas" />
+        <activity android:name="android_activity.activity_adm_business_inteligence" />
+        <activity android:name="android_activity.activity_adm_banco_informacoes" />
+        <activity android:name="android_activity.activity_home_bancos_meu_cpf" />
+        <activity android:name="android_activity.activity_home_contas_a_pagar" />
+        <activity android:name="android_activity.activity_home_faturas_cartao" />
+        <activity android:name="android_activity.activity_home_saldos_bancos" />
+        <activity android:name="android_activity.activity_home_perfil"></activity>
     </application>
 
 </manifest>
