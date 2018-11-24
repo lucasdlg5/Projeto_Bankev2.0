@@ -17,42 +17,42 @@
             android:id="@+id/button2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_01"
             android:text="Administração" />
 
         <Button
             android:id="@+id/button3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_02"
             android:text="Bancos em meu CPF" />
 
         <Button
             android:id="@+id/button4"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_03"
             android:text="Contas a Pagar" />
 
         <Button
             android:id="@+id/button5"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_04"
             android:text="Faturas do cartão" />
 
         <Button
             android:id="@+id/button6"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_05"
             android:text="Saldos de bancos" />
 
         <Button
             android:id="@+id/button7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_06"
             android:text="Meu perfil" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>

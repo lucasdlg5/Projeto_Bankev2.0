@@ -17,50 +17,50 @@
             android:id="@+id/button8"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_08"
             android:text="Listar Usuários" />
         <Button
             android:id="@+id/button9"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_09"
             android:text="Buscar Usuarios" />
         <Button
             android:id="@+id/button10"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_10"
             android:text="Relatório de Saldos" />
         <Button
             android:id="@+id/button11"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_11"
             android:text="Gerenciador de Faturas" />
 
         <Button
             android:id="@+id/button12"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_12"
             android:text="Business Intelligence" />
         <Button
             android:id="@+id/button13"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_01"
             android:text="Banco de informações" />
         <Button
             android:id="@+id/button14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_02"
             android:text="Gerenciar Permissões" />
         <Button
             android:id="@+id/button15"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/ic_launcher"
+            android:drawableRight="@mipmap/ic_launcher_03"
             android:text="Verificação de fraudes e alertas" />
 
     </LinearLayout>
