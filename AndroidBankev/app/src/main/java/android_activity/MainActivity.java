@@ -59,4 +59,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(v.getContext(), CadastroUsuarioActivity.class);
         startActivity(intent);
     }
+
+    public void openRegisterPage(View v){
+        nextWindow = new Intent(v.getContext(), activity_signup.class);
+        startActivity(nextWindow);
+    }
 }

@@ -41,7 +41,8 @@
         <activity android:name="android_activity.activity_home_contas_a_pagar" />
         <activity android:name="android_activity.activity_home_faturas_cartao" />
         <activity android:name="android_activity.activity_home_saldos_bancos" />
-        <activity android:name="android_activity.activity_home_perfil"></activity>
+        <activity android:name="android_activity.activity_home_perfil" />
+        <activity android:name="android_activity.activity_signup"></activity>
     </application>
 
 </manifest>
