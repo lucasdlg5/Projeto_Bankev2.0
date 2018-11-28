@@ -11,7 +11,8 @@ Usando Android Studio e Java para android, o aplicativo respeita a comunicacao R
 
 Algumas telas:
 -Tela de Login
-
--Tela de Login
-
--Tela de Login
+![alt text]()
+-Tela de Cadastro
+![alt text]()
+-Tela de Menu
+![alt text]()
