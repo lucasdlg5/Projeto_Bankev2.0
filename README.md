@@ -10,9 +10,15 @@ HTML, Bootstrap, CSS e JavaScript somados a um servidor Java, comunicao realizad
 Usando Android Studio e Java para android, o aplicativo respeita a comunicacao REST com o servidor Java (mesmo da aplicacao Web).
 
 Algumas telas:
--Tela de Login
-![alt text]()
--Tela de Cadastro
-![alt text]()
--Tela de Menu
-![alt text]()
+- Tela de Login
+<p align="center">
+  <img src="https://github.com/lucasdlg5/Projeto_Bankev2.0/blob/master/Prints%20App/LOGIN.jpg" width="350" title="Tela de Login">
+</p>
+- Tela de Cadastro
+<p align="center">
+  <img src="https://github.com/lucasdlg5/Projeto_Bankev2.0/blob/master/Prints%20App/CADASTRO.jpg" width="350" title="Tela de Cadastro">
+</p>
+- Tela de Menu
+<p align="center">
+  <img src="https://github.com/lucasdlg5/Projeto_Bankev2.0/blob/master/Prints%20App/MENU1.jpg" width="350" title="Tela de Menu">
+</p>
