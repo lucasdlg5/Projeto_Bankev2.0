@@ -2,6 +2,10 @@
 Esse projeto comecou na materia de Laboratorio de Banco de Dados 3 e continuou na materia de Padroes de Projeto, ambas ministradas pelo Prof. Giuliano.
 
 O projeto consiste em uma aplicacao Java/Web e Java/Android, a persistencia e realizada pelo banco orientado a objeto DB4O.
+# Diagrama UML do Projeto
+<p align="center">
+  <img src="https://github.com/lucasdlg5/Projeto_Bankev2.0/blob/master/Documentos%20AppBank/Diagrama%20de%20classe.jpg" width="350" title="Diagrama UML do Projeto">
+</p>
 
 # Aplicacao Web
 HTML, Bootstrap, CSS e JavaScript somados a um servidor Java, comunicao realizada via REST.
