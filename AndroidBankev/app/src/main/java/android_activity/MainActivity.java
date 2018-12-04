@@ -42,11 +42,11 @@ public class MainActivity extends AppCompatActivity {
         TextView txtSenha = findViewById(R.id.txtSenha);
         TextView lblResultado = findViewById(R.id.lblResultado);
 
-        String login = String.valueOf(txtLogin.getText());
-        String senha = String.valueOf(txtSenha.getText());
+//        String login = String.valueOf(txtLogin.getText());
+//        String senha = String.valueOf(txtSenha.getText());
 
-//        String login = "lucasdlg";
-//        String senha = "123";
+        String login = "lucasdlg";
+        String senha = "123";
         try{
         Conexao cnn = new Conexao();
         boolean doLogin = cnn.sendPostLogin(login, senha);

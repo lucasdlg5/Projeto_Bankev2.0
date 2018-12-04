@@ -97,7 +97,7 @@ public class Conexao{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL(IP + "buscaListUsuarios");
+        URL url = new URL(IP + "/buscaListUsuarios");
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 
@@ -128,7 +128,7 @@ public class Conexao{
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
         StrictMode.setThreadPolicy(policy);
 
-        URL url = new URL(IP + "buscaListUsuarios" + login);
+        URL url = new URL(IP + "/buscaListUsuarios" + login);
 
         HttpURLConnection conn = (HttpURLConnection) url.openConnection();
 

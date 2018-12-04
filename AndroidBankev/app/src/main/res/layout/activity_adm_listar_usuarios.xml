@@ -6,11 +6,34 @@
     android:layout_height="match_parent"
     tools:context="android_activity.activity_adm_listar_usuarios">
 
+
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Listar Usuarios"
-        tools:layout_editor_absoluteX="111dp"
-        tools:layout_editor_absoluteY="148dp" />
+        android:layout_marginStart="9dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="242dp"
+        android:layout_marginBottom="6dp"
+        android:text="Listagem de Usuários"
+        app:layout_constraintBottom_toTopOf="@+id/rvNomes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvNomes"
+        android:layout_width="368dp"
+        android:layout_height="529dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="5dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+    </android.support.v7.widget.RecyclerView>
 </android.support.constraint.ConstraintLayout>
