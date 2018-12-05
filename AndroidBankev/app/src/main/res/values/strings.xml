@@ -25,4 +25,5 @@
     <string name="txtConta">Conta</string>
     <string name="btnCadastrar">Cadastrar</string>
     <string name="CadastroUsuarios">Registre-se Aqui</string>
+    <string name="description_is_here">Description is Here</string>
 </resources>
