@@ -9,6 +9,7 @@ O projeto consiste em uma aplicacao Java/Web e Java/Android, a persistencia e re
 
 # Aplicacao Web
 HTML, Bootstrap, CSS e JavaScript somados a um servidor Java, comunicao realizada via REST.
+Link do projeto hospedado no heroku: https://projetobankev.herokuapp.com/login-base/index.html
 
 # Aplicacao Android
 Usando Android Studio e Java para android, o aplicativo respeita a comunicacao REST com o servidor Java (mesmo da aplicacao Web).
